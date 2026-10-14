@@ -18,6 +18,10 @@ for name in ("logo-dsc", "logo-vitap", "logo-iiec"):
             sat = (mx - mn) / mx
             if sat < 0.30:           # white / grey artwork -> black ink
                 op[x, y] = (0, 0, 0, min(255, int(a * 255 * 1.1)))
+            elif name == 'logo-iiec':  # solid dark red, like the original lettering
+                f = 175.0 / mx
+                op[x, y] = (min(255, int(r * f)), min(255, int(g * f)), min(255, int(b * f)), min(255, int(mx * 5)))
+                continue
             else:                    # coloured artwork (pink brains, red IIEC) -> keep colour, un-premultiply
                 al = min(1.0, a * 1.6)
                 f = 255.0 / mx

@@ -61,20 +61,18 @@ def heading(s, y, text, mandatory=False):
 
 def chrome(s, n, title):
     bgwhite(s)
-    oval = rect(s, 0.4, 0.3, 1.6, 0.85, line=CYAN, lw=2.5, shape=MSO_SHAPE.OVAL)
-    txt(s, 0, 0, 0, 0, "Your Team Name", size=12, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, shape=oval)
-    txt(s, 2.1, 0.25, 8.1, 0.95, title, size=30, font=DISPLAY, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    s.shapes.add_picture(os.path.join(A, "logo-dsc-light.png"), Inches(10.2), Inches(0.2), height=Inches(0.95))
-    s.shapes.add_picture(os.path.join(A, "logo-iiec-light.png"), Inches(11.7), Inches(0.42), height=Inches(0.55))
+    txt(s, 1.95, 0.25, 9.4, 0.95, title, size=30, font=DISPLAY, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+    s.shapes.add_picture(os.path.join(A, "logo-dsc-light.png"), Inches(0.45), Inches(0.15), height=Inches(1.0))
+    s.shapes.add_picture(os.path.join(A, "logo-iiec-light.png"), Inches(11.2), Inches(0.35), height=Inches(0.62))
     rect(s, 0, 6.95, 13.333, 0.55, fill=CYAN)
     txt(s, 0, 6.95, 13.333, 0.55, "DATATHON 2026  ·  Round 1 Idea Submission – Template", size=12, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
     txt(s, 11.9, 6.95, 1.1, 0.55, str(n), size=13, bold=True, align=PP_ALIGN.RIGHT, anchor=MSO_ANCHOR.MIDDLE)
 
 # 1 ---------- title
 s = prs.slides.add_slide(blank); bgwhite(s)
-s.shapes.add_picture(os.path.join(A, "logo-dsc-light.png"), Inches(0.7), Inches(0.25), height=Inches(1.15))
+s.shapes.add_picture(os.path.join(A, "logo-dsc-light.png"), Inches(0.55), Inches(0.25), height=Inches(1.15))
 s.shapes.add_picture(os.path.join(A, "logo-vitap-light.png"), Inches(4.9), Inches(0.4), height=Inches(0.85))
-s.shapes.add_picture(os.path.join(A, "logo-iiec-light.png"), Inches(10.3), Inches(0.4), height=Inches(0.85))
+s.shapes.add_picture(os.path.join(A, "logo-iiec-light.png"), Inches(10.75), Inches(0.5), height=Inches(0.75))
 rect(s, 0.5, 1.55, 12.33, 0.04, fill=CYAN)
 txt(s, 0.5, 1.7, 12.3, 1.5, [("DATA", {}), ("T", {'color': CYAN}), ("HON 2026", {})], size=66, font=DISPLAY, align=PP_ALIGN.CENTER)
 txt(s, 0.5, 3.05, 12.3, 0.6, "ROUND 1  ·  IDEA PPT + BASE PROTOTYPE", size=24, bold=True, align=PP_ALIGN.CENTER)
