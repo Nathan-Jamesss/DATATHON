@@ -64,19 +64,18 @@ def chrome(s, n, title):
     oval = rect(s, 0.4, 0.3, 1.6, 0.85, line=CYAN, lw=2.5, shape=MSO_SHAPE.OVAL)
     txt(s, 0, 0, 0, 0, "Your Team Name", size=12, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, shape=oval)
     txt(s, 2.1, 0.25, 8.1, 0.95, title, size=30, font=DISPLAY, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    rect(s, 10.35, 0.2, 2.75, 1.0, fill=BLACK, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.2)
-    s.shapes.add_picture(os.path.join(A, "logo-dsc.png"), Inches(10.5), Inches(0.27), height=Inches(0.86))
-    s.shapes.add_picture(os.path.join(A, "logo-iiec.png"), Inches(11.55), Inches(0.43), height=Inches(0.55))
+    s.shapes.add_picture(os.path.join(A, "logo-dsc-light.png"), Inches(10.2), Inches(0.2), height=Inches(0.95))
+    s.shapes.add_picture(os.path.join(A, "logo-iiec-light.png"), Inches(11.7), Inches(0.42), height=Inches(0.55))
     rect(s, 0, 6.95, 13.333, 0.55, fill=CYAN)
     txt(s, 0, 6.95, 13.333, 0.55, "DATATHON 2026  ·  Round 1 Idea Submission – Template", size=12, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
     txt(s, 11.9, 6.95, 1.1, 0.55, str(n), size=13, bold=True, align=PP_ALIGN.RIGHT, anchor=MSO_ANCHOR.MIDDLE)
 
 # 1 ---------- title
 s = prs.slides.add_slide(blank); bgwhite(s)
-rect(s, 0, 0, 13.333, 1.5, fill=BLACK)
-s.shapes.add_picture(os.path.join(A, "logo-dsc.png"), Inches(0.6), Inches(0.2), height=Inches(1.1))
-s.shapes.add_picture(os.path.join(A, "logo-vitap.png"), Inches(5.0), Inches(0.35), height=Inches(0.8))
-s.shapes.add_picture(os.path.join(A, "logo-iiec.png"), Inches(10.4), Inches(0.35), height=Inches(0.8))
+s.shapes.add_picture(os.path.join(A, "logo-dsc-light.png"), Inches(0.7), Inches(0.25), height=Inches(1.15))
+s.shapes.add_picture(os.path.join(A, "logo-vitap-light.png"), Inches(4.9), Inches(0.4), height=Inches(0.85))
+s.shapes.add_picture(os.path.join(A, "logo-iiec-light.png"), Inches(10.3), Inches(0.4), height=Inches(0.85))
+rect(s, 0.5, 1.55, 12.33, 0.04, fill=CYAN)
 txt(s, 0.5, 1.7, 12.3, 1.5, [("DATA", {}), ("T", {'color': CYAN}), ("HON 2026", {})], size=66, font=DISPLAY, align=PP_ALIGN.CENTER)
 txt(s, 0.5, 3.05, 12.3, 0.6, "ROUND 1  ·  IDEA PPT + BASE PROTOTYPE", size=24, bold=True, align=PP_ALIGN.CENTER)
 bullets(s, 3.2, 3.9, 8.5, ["Team Name (as registered)", "Team Members (1–2)", "Track Chosen", "Problem Statement Title", "Product Name"], size=24, gap=8)
@@ -107,22 +106,6 @@ slide(7, "TECHNICAL APPROACH", [
     ("Technical Approach", ["Technologies used (languages, frameworks, APIs)", "Flow: Data → Analyze → Model → Build → Deploy"], False)])
 slide(8, "FEASIBILITY, IMPACT & NEXT STEPS", [
     ("Feasibility, Impact & Next Steps", ["Feasibility, risks and how to overcome them", "Impact and limitations (synthetic data)", "Next steps and references"], False)])
-
-# 9 ---------- instructions (SIH style)
-s = prs.slides.add_slide(blank); chrome(s, 9, "IMPORTANT INSTRUCTIONS")
-txt(s, 0.6, 1.4, 12, 0.5, "Please ensure the pointers below are met while submitting the Round 1 Idea PPT:", size=18, bold=True)
-rect(s, 0.4, 2.05, 12.5, 4.5, fill=WASH, line=BLACK, lw=1.5, shape=MSO_SHAPE.ROUNDED_RECTANGLE, radius=0.06)
-inst = ["Maximum eight (8) slides, including the title slide.",
-        "USP and MVP sections are mandatory.",
-        "Avoid paragraphs. Use points, diagrams and screenshots.",
-        "Keep the headings as they are and fill in your own details.",
-        "Disclose any API key, pretrained model or extra data used. A model trained from scratch earns more marks.",
-        "Submit before 12:00 PM, in the way announced by the organisers."]
-tb = s.shapes.add_textbox(Inches(0.8), Inches(2.25), Inches(11.8), Inches(3.4)); tf = tb.text_frame; tf.word_wrap = True
-for i, t in enumerate(inst):
-    p = tf.paragraphs[0] if i == 0 else tf.add_paragraph(); p.space_after = Pt(8)
-    r = p.add_run(); r.text = f"{i+1}.  {t}"; r.font.bold = True; r.font.size = Pt(18); r.font.name = BODY; r.font.color.rgb = BLACK
-txt(s, 0.8, 5.85, 11.8, 0.5, "Note – Delete this slide before you submit.", size=16, bold=True, color=RGBColor(0xC0, 0, 0))
 
 prs.save(OUT)
 print("saved", OUT)

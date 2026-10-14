@@ -26,7 +26,10 @@ function getSheet_() {
 function doPost(e) {
   if (e.postData.contents.length > 200000) return ContentService.createTextOutput('too large');
   var d = JSON.parse(e.postData.contents);
+  var lock = LockService.getScriptLock();
+  lock.waitLock(20000);
   getSheet_().appendRow([d.submittedAt, d.team, d.track, d.repo, d.modelType, (d.apis || []).join(', '), d.email, JSON.stringify(d)]);
+  lock.releaseLock();
   return ContentService.createTextOutput('ok');
 }
 

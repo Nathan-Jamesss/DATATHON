@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 # internal approval doc (contains a coordinator phone number)
 DATATHON_Event_Proposal_Final.docx
+.gstack/

@@ -22,10 +22,8 @@ def make(wrapp, page_head, ic, TRACKS, REG):
     radios = "".join(f'<label class="opt"><input type="radio" name="modelType" value="{v}" required><span><b>{t}</b><small>{d}</small></span></label>' for v, t, d in opts)
     apis = ["OpenAI", "Anthropic Claude", "Google Gemini", "Groq", "Hugging Face Inference", "Cohere", "Other", "None"]
     api_boxes = "".join(f'<label class="chk"><input type="checkbox" name="api" value="{a}"><span>{a}</span></label>' for a in apis)
-    decls = ["Our GitHub repo is public and the README explains how to run it.",
-             "We used the provided dataset and disclosed any extra data.",
-             "We declared every API key, pretrained model and borrowed code we used.",
-             "No API keys or secrets are committed to the repo."]
+    decls = ["Our GitHub repo is public.",
+             "We listed every API / pretrained model we used and committed no API keys."]
     decl_boxes = "".join(f'<label class="chk chk--block"><input type="checkbox" name="decl" value="{d}" required><span>{d}</span></label>' for d in decls)
 
     def round2_page():
@@ -43,7 +41,7 @@ def make(wrapp, page_head, ic, TRACKS, REG):
 <label class="fld"><span>Track *</span><select name="track" required><option value="">Choose your track</option>{track_opts}</select></label>
 </div></fieldset>
 <fieldset><legend><span>02</span> Project &amp; GitHub</legend><div class="fgrid">
-{f("Product name", "product", req=True)}{f("One-line pitch", "pitch", req=True)}
+{f("Product name", "product", req=True)}{f("One-line pitch (optional)", "pitch")}
 <label class="fld fld--wide"><span>GitHub repository URL *</span><div class="inline"><input type="url" name="repo" placeholder="https://github.com/team/project" required><button type="button" class="btn btn--fill" id="verify">Check repo</button></div><small>Must be public. “Check repo” is optional: it scans for model files, training code and API usage to help judges.</small></label>
 <div id="evidence" class="fld--wide"></div>
 {f("Live demo / video link (optional)", "demo", "url", span=True)}
@@ -52,20 +50,15 @@ def make(wrapp, page_head, ic, TRACKS, REG):
 <div class="opts" role="radiogroup" aria-label="Model type">{radios}</div>
 <div class="fgrid" style="margin-top:14px">
 <div class="fgrid fld--wide" data-when="scratch finetuned" hidden>
-{f("Algorithm / base model", "algo", req=True, ph="e.g. Random Forest, LSTM, ResNet18")}{f("Task", "task", req=True, ph="e.g. predict waiting time (regression)")}
-{f("Target / label", "target", req=True)}{f("Evaluation metric + result", "metric", req=True, ph="e.g. MAE 6.2 min vs baseline 9.8")}
-{f("Features used", "features", "textarea", span=True, rows=2)}
-{f("Train/test split strategy", "split", req=True, ph="e.g. time-based, last 20% held out")}{f("Baseline compared against", "baseline")}
-{f("Path to training code in repo", "trainPath", req=True, ph="e.g. notebooks/train.ipynb")}{f("Path to saved model file", "modelPath", ph="e.g. models/model.pkl")}
+{f("What does your model predict?", "task", req=True, ph="e.g. waiting time at a hospital")}{f("Algorithm used", "algo", req=True, ph="e.g. Random Forest, LSTM")}
+{f("Training code file in your repo", "trainPath", req=True, ph="e.g. notebooks/train.ipynb")}{f("Result, if you measured one (optional)", "metric", ph="e.g. error 6 min")}
 </div>
 <div class="fld--wide" data-when="api" hidden>{f("What does the API do in your product?", "apiUse", "textarea", True, span=True, rows=2)}</div>
 </div></fieldset>
 <fieldset><legend><span>04</span> APIs, keys &amp; data</legend>
 <div class="chks">{api_boxes}</div>
 <div class="fgrid" style="margin-top:14px">
-{f("Other API / pretrained model (name)", "apiOther")}
-{f("Extra data used (source + licence)", "extraData", "textarea", rows=2)}
-{f("How to run your project", "howToRun", "textarea", span=True, rows=3, hint="Commands, environment, or a link to the README section.")}
+{f("Any extra data you used? (optional)", "extraData", span=True)}
 </div>
 <div class="notice">{ic('info')}<span>Never commit API keys. Keep them in a <b>.env</b> file listed in <b>.gitignore</b>. Keys found in a public repo are flagged to judges.</span></div>
 </fieldset>

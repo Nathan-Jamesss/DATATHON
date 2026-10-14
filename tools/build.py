@@ -139,7 +139,7 @@ RUBRIC = [
 RULES = [
  ("Choose one track.", "Build against the corresponding problem statement and starter dataset."),
  ("The provided dataset is foundational.", "You may add relevant public data, APIs or self-collected data if permitted, but you must still use the supplied dataset meaningfully."),
- ("Disclose additional data.", "Include source, licence/permission, collection method, and what it contributes."),
+ ("Tell us about extra data.", "If you used data beyond the provided pack, say where it came from."),
  ("No replacing the core dataset.", "A product that ignores the provided data and relies entirely on an external API will lose data-use marks."),
  ("Build a product, not only a model.", "A notebook, static chart or model file alone is not a complete submission."),
  ("Model claims must be supported.", "Report the evaluation method and appropriate metrics. Do not claim “high accuracy” without evidence."),
