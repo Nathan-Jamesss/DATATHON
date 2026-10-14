@@ -12,7 +12,7 @@ def make(wrapp, page_head, ic, TRACKS, REG):
             inp = f'<input type="{kind}" name="{name}" placeholder="{ph}"{r}>'
         return f'<label class="{cls}"><span>{label}{star}</span>{inp}{h}</label>'
 
-    track_opts = "".join(f'<option value="0{t["n"]} {t["dom"]}">0{t["n"]} · {t["dom"]} — {t["title"]}</option>' for t in TRACKS)
+    track_opts = "".join(f'<option value="0{t["n"]} {t["dom"]}">Track {t["n"]} · {t["dom"]}</option>' for t in TRACKS)
     opts = [
         ("scratch", "Trained from scratch", "We built and trained our own model on the provided data. Scores highest."),
         ("finetuned", "Fine-tuned a pretrained model", "We meaningfully fine-tuned an existing model. Partial marks."),

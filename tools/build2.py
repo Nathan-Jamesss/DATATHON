@@ -93,7 +93,7 @@ def strip():
 
 TILES = [
  ("01", "timeline.html", "clock", "Timeline", "Full itinerary with arrows, 9 AM to 6 PM.", "band-cyan"),
- ("02", "problem-statements.html", "db", "Problem Statements", "4 tracks and every downloadable dataset.", "band-wash"),
+ ("02", "problem-statements.html", "db", "Problem Statements", "Unlocks Fri 16 Oct at 10:00 AM, with a live countdown.", "band-wash"),
  ("03", "ppt.html", "file", "Round 1 PPT", "Idea PPT + base prototype. USP + MVP are mandatory.", "band-dark"),
  ("04", "round2.html", "cube", "Round 2", "Submit your GitHub repo and model details by 4 PM.", "band-cyan"),
  ("05", "judging.html", "trophy", "Judging & Prizes", "100-mark rubric (from-scratch ML scores highest) and the ₹4,500 pool.", "band-wash"),
