@@ -1,0 +1,31 @@
+/* v4: big countdown panel + 2-row snake strip (no horizontal scroll) */
+.b-reg { grid-column: span 2; }
+.bigcount { margin-top: 14px; border: 1px solid var(--paper); border-radius: 40px; padding: clamp(22px, 3vw, 40px); display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.6fr); gap: clamp(16px, 3vw, 40px); align-items: center; background: var(--carbon); }
+.bigcount__label { display: grid; gap: 12px; }
+.bigcount__label small { font: 800 12px/1 var(--font-ui); letter-spacing: .32em; text-transform: uppercase; color: var(--cyan); }
+.bigcount__label span { font: 800 clamp(16px, 1.8vw, 22px)/1.25 var(--font-ui); text-transform: uppercase; letter-spacing: -0.01em; }
+.bigcount .countdown { margin: 0; flex-wrap: nowrap; gap: clamp(8px, 1.4vw, 16px); }
+.bigcount .countdown__cell { flex: 1; min-width: 0; border: 1px solid rgba(255,255,255,.35); border-radius: 24px; padding: clamp(14px, 2vw, 28px) 8px; }
+.bigcount .countdown__cell b { font-size: clamp(38px, 6.4vw, 96px); line-height: .9; }
+.bigcount .countdown__cell small { display: block; margin-top: 10px; font-size: clamp(10px, 1vw, 13px); letter-spacing: .2em; }
+.bigcount .countdown__live { font-size: clamp(32px, 5vw, 64px); width: 100%; text-align: center; border-radius: 24px; }
+
+.strip { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 34px 38px; overflow: visible; padding: 4px 0 0; }
+.strip__item { flex: none; position: relative; min-width: 0; }
+.strip__box { min-height: 96px; width: 100%; }
+.strip__arrow { position: absolute; width: auto; font: 800 22px/1 var(--font-ui); }
+.strip__arrow--r { right: -30px; top: 50%; transform: translateY(-50%); }
+.strip__arrow--l { left: -30px; top: 50%; transform: translateY(-50%); }
+.strip__arrow--d { left: 50%; bottom: -30px; transform: translateX(-50%); }
+.strip__item:last-child .strip__arrow { display: none; }
+
+@media (max-width: 1100px) { .bigcount { grid-template-columns: minmax(0, 1fr); } .b-reg { grid-column: span 2; } }
+@media (max-width: 900px) {
+  .strip { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 34px; }
+  .strip__item { grid-column: auto !important; grid-row: auto !important; }
+  .strip__arrow { display: none; }
+}
+@media (max-width: 600px) {
+  .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 30px; }
+  .b-reg { grid-column: auto; }
+}
