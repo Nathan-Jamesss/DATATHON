@@ -97,7 +97,7 @@ TILES = [
  ("03", "ppt.html", "file", "Round 1 PPT", "Idea PPT + base prototype. USP + MVP are mandatory.", "band-dark"),
  ("04", "round2.html", "cube", "Round 2", "Submit your GitHub repo and model details by 4 PM.", "band-cyan"),
  ("05", "judging.html", "trophy", "Judging & Prizes", "100-mark rubric (from-scratch ML scores highest) and the ₹4,500 pool.", "band-wash"),
- ("06", "rules.html", "check", "Rules", "15 rules plus first steps for every team.", "band-dark"),
+ ("06", "rules.html", "check", "Rules", "The 15 rules every team follows.", "band-dark"),
 ]
 def home_page():
     chain = "".join(f'<span class="chip">{t}</span>' + ('<span class="chain__a" aria-hidden="true">→</span>' if k < 4 else "") for k, t in enumerate(["Data", "Analyze", "Model", "Build", "Deploy"]))
@@ -163,17 +163,10 @@ def judging_page():
 def rules_page():
     body = page_head("The fine print", "Ground <span class=\"t\">rules</span>", "15 rules. Tap any rule to expand.")
     r = "".join(f'<details class="rule"><summary data-n="{i+1:02d}">{t}</summary><p>{d}</p></details>' for i, (t, d) in enumerate(RULES))
-    steps = "".join(f"<li>{s}</li>" for s in FIRST_STEPS)
     body += f"""<section class="band band-dark band--tight"><div class="wrap">
 <div class="rules">{r}</div>
-<h2 class="sub-h">Before you <span style="color:var(--cyan)">start</span></h2>
-<ol class="steps4">{steps}</ol>
-<div class="rules" style="margin-top:14px;grid-template-columns:repeat(2,minmax(0,1fr))">
-<details class="rule"><summary data-n="ML">Original ML model counts when…</summary><p>You define a prediction/classification/ranking/forecasting/anomaly task, train or fine-tune on the provided data, document features, label, split, baseline, metric and limits, and the model changes a real workflow or decision. An API key or pretrained model alone earns the lowest marks; training from scratch earns the most.</p></details>
-
-</div>
 </div></section>"""
-    return wrapp("rules", "Rules · DATATHON 2026", "DATATHON rules and first steps.", body)
+    return wrapp("rules", "Rules · DATATHON 2026", "DATATHON rules.", body)
 
 # ---------------- problem statements ----------------
 def users_list(u):
