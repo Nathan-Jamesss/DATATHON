@@ -32,13 +32,26 @@ function getTab_(name, head) {
   return sh;
 }
 
+// One row per team in "Teams": a team that registers on the Problem Statements page and later submits Round 2 is updated, not duplicated.
+function upsertTeam_(d) {
+  var sh = getTab_(TEAMS, TEAM_HEAD);
+  var rows = sh.getDataRange().getValues();
+  var name = String(d.team || '').trim().toLowerCase();
+  var vals = [d.team, d.track, d.members, Number(d.size) || ''];
+  for (var i = 1; i < rows.length; i++) {
+    if (String(rows[i][0]).trim().toLowerCase() === name) { sh.getRange(i + 1, 1, 1, 4).setValues([vals]); return; }
+  }
+  sh.appendRow(vals);
+}
+
 function doPost(e) {
   if (e.postData.contents.length > 200000) return ContentService.createTextOutput('too large');
   var d = JSON.parse(e.postData.contents);
   var m = d.modelDetails || {};
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
-  getTab_(TEAMS, TEAM_HEAD).appendRow([d.team, d.track, d.members, Number(d.size) || '']);
+  upsertTeam_(d);
+  if (d.type === 'team') { lock.releaseLock(); return ContentService.createTextOutput('ok'); }
   getTab_(SUBMISSIONS, SUB_HEAD).appendRow([
     d.submittedAt, d.team, d.track, d.product, d.repo, d.demo, d.modelType,
     m.task || '', m.algo || '', m.trainPath || '',

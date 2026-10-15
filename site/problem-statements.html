@@ -49,6 +49,20 @@
 <div class="page-head__logos"><img src="assets/logo-dsc.png" alt="Data Science Club VIT-AP"><img src="assets/logo-iiec.png" alt="IIEC"></div></div>
 <p class="lede">Pick one track. Build a working data-powered product, not just a notebook.</p><div class="dlbar"><span class="label">Download</span><a class="btn btn--fill" href="datasets/DATATHON_All_Track_Datasets.zip" download><svg class="icon " aria-hidden="true"><use href="#i-download"/></svg> All 4 tracks (.zip)</a><a class="btn btn--sm" href="datasets/01_health_forgotten_patient.zip" download><svg class="icon " aria-hidden="true"><use href="#i-download"/></svg> 01 Health</a><a class="btn btn--sm" href="datasets/02_education_campus_space.zip" download><svg class="icon " aria-hidden="true"><use href="#i-download"/></svg> 02 Education</a><a class="btn btn--sm" href="datasets/03_smart_city_where_fix_first.zip" download><svg class="icon " aria-hidden="true"><use href="#i-download"/></svg> 03 Smart City</a><a class="btn btn--sm" href="datasets/04_business_money_leak.zip" download><svg class="icon " aria-hidden="true"><use href="#i-download"/></svg> 04 Business</a></div></div></section><div class="lock" id="lock" hidden><div><span class="eyebrow" style="justify-content:center">Locked until release</span><h2 class="display" style="margin-top:24px">Drops at <span class="t">10:00</span></h2><p>Friday 16 October 2026, 10:00 AM IST.</p><div class="countdown" id="lockcd" data-target="2026-10-16T10:00:00+05:30" style="justify-content:center"></div><p><a class="btn" href="index.html">Back to home</a></p></div></div>
 <section class="band band-wash band--tight"><div class="wrap">
+<form id="teamform" class="r2form teamform" novalidate>
+<fieldset><legend><span>★</span> Register your team &amp; track</legend>
+<p class="muted" style="margin:0 0 14px">Fill this once. It tells the judges which problem your team picked. You can save again to correct anything.</p>
+<div class="fgrid tf3">
+<label class="fld"><span>Team name *</span><input type="text" name="team" required></label>
+<label class="fld"><span>Members (1–2) *</span><input type="text" name="members" required placeholder="Name, Name"></label>
+<label class="fld"><span>Contact email *</span><input type="email" name="email" required></label>
+<label class="fld"><span>Number of people *</span><select name="size" required><option value="">Choose</option><option value="1">1 (solo)</option><option value="2">2 (duo)</option></select></label>
+<label class="fld tf-wide"><span>Track chosen *</span><select name="track" required><option value="">Choose your track</option><option value="01 Health">Track 1 · Health — The Forgotten Patient</option><option value="02 Education">Track 2 · Education — The Campus Has Space. Students Don’t.</option><option value="03 Smart City">Track 3 · Smart City — Where Should We Fix First?</option><option value="04 Business">Track 4 · Business — The Money Leak</option></select></label>
+<div class="tf-btn"><button class="btn btn--fill btn--lg" type="submit">Save my team</button></div>
+</div>
+<div id="teamout" class="r2out" hidden></div>
+</fieldset></form>
+
 <div class="ptabs" role="tablist" aria-label="Tracks"><button class="ptab" role="tab" id="tab-1" aria-controls="track-1" aria-selected="false" data-n="1"><span class="ptab__no">01</span><b>The Forgotten Patient</b><small>Health</small></button><button class="ptab" role="tab" id="tab-2" aria-controls="track-2" aria-selected="false" data-n="2"><span class="ptab__no">02</span><b>The Campus Has Space. Students Don’t.</b><small>Education</small></button><button class="ptab" role="tab" id="tab-3" aria-controls="track-3" aria-selected="false" data-n="3"><span class="ptab__no">03</span><b>Where Should We Fix First?</b><small>Smart City</small></button><button class="ptab" role="tab" id="tab-4" aria-controls="track-4" aria-selected="false" data-n="4"><span class="ptab__no">04</span><b>The Money Leak</b><small>Business</small></button></div>
 <section class="ptrack" id="track-1" role="tabpanel" aria-labelledby="tab-1" data-track="1">
 <div class="ptrack__head"><div class="track__dom"><span class="chip chip--cyan"><svg class="icon " aria-hidden="true"><use href="#i-health"/></svg> Track 1 · Health</span><span class="chip">5 files · 27,012 rows</span></div>
@@ -150,7 +164,9 @@
 <div class="footer__meta"><a href="judge.html">Judges</a><span>Organised by Data Science Club (DSC)</span><span>In collaboration with IIEC</span><span>Fri 16 Oct 2026 · VIT-AP University</span></div>
 </div></footer>
 <script src="js/site.js"></script>
+<script src="js/config.js"></script>
 <script src="js/tabs.js"></script>
 <script src="js/lock.js"></script>
+<script src="js/teamreg.js"></script>
 </body>
 </html>

@@ -51,9 +51,25 @@ tick();setInterval(tick,1000);
   });
 }
 
+// Organiser preview: open any locked page once with ?preview=<PREVIEW_KEY> and a cookie keeps it open for 12 hours
+// in that browser only. The key lives in Vercel's environment variables (not in this repo).
+const KEY = (typeof process !== 'undefined' && process.env && process.env.PREVIEW_KEY) || '';
+
 export default function middleware(request) {
-  const { pathname } = new URL(request.url);
+  const url = new URL(request.url);
+  const { pathname } = url;
   const now = Date.now();
+
+  if (KEY) {
+    if (url.searchParams.get('preview') === KEY) {
+      url.searchParams.delete('preview');
+      return new Response(null, {
+        status: 302,
+        headers: { location: url.toString(), 'set-cookie': `dt_preview=${KEY}; Path=/; Max-Age=43200; HttpOnly; Secure; SameSite=Lax`, 'cache-control': 'no-store' },
+      });
+    }
+    if ((request.headers.get('cookie') || '').split(/;\s*/).includes(`dt_preview=${KEY}`)) return PASS();
+  }
 
   if (pathname.startsWith('/round2')) {
     if (now >= ROUND2_AT) return PASS();

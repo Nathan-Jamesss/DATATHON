@@ -54,6 +54,12 @@
     };
   }
 
+  // prefill from the team registration on the Problem Statements page
+  try {
+    var tm = JSON.parse(localStorage.getItem('dt_team') || 'null');
+    if (tm) ['team', 'members', 'email', 'size', 'track'].forEach(function (k) { var el = form.elements[k]; if (el && !el.value && tm[k]) el.value = tm[k]; });
+  } catch (e) {}
+
   var verifyBtn = document.getElementById('verify');
   verifyBtn.addEventListener('click', function () {
     var url = form.elements.repo.value.trim();
