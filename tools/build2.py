@@ -197,13 +197,13 @@ def ptrack(t):
 <details class="more"><summary>Full problem brief</summary><p>{t['problem']}</p></details>
 <details class="more"><summary>How the data helps</summary><p>{t['helps']}</p></details>
 <details class="more"><summary>Possible ML / data-science work</summary><p>{t['ml']}</p></details>
+<div class="question"><small>Useful product question</small><p>“{t['q']}”</p></div>
 </div>
 <aside class="pcol" aria-label="Track {t['n']} datasets">
 <div class="files"><div class="files__head"><h4>Download datasets</h4><a class="btn btn--sm btn--fill" href="datasets/{t['folder']}.zip" download>{ic('download')} All (.zip)</a></div>
 {rows}
 <div class="file"><div><b>README.txt</b><small>Joins and caveats for this track.</small></div><a class="btn btn--sm" href="datasets/{t['folder']}/README.txt" download>{ic('download')} TXT</a></div>
 <p class="files__note">Synthetic educational data, not real records.</p></div>
-<div class="question"><small>Useful product question</small><p>“{t['q']}”</p></div>
 </aside></div></section>"""
 
 def problems_page():

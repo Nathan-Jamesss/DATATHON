@@ -74,6 +74,7 @@
 <details class="more"><summary>Full problem brief</summary><p>A patient’s experience in a hospital is a connected journey: arrival, triage, consultation, diagnostic tests, treatment, and discharge. When these stages are managed separately, delays and capacity issues can be difficult to spot early. Hospital teams need a clearer view of where patients are waiting, which services are under pressure, and where intervention may help.</p></details>
 <details class="more"><summary>How the data helps</summary><p>Teams can link visits to patients and departments, calculate wait and service patterns, compare departments, estimate test turnaround, study time-of-day demand, and build an operational view from several tables. The device-vitals table is simulated and is <b>not</b> suitable for clinical diagnosis.</p></details>
 <details class="more"><summary>Possible ML / data-science work</summary><p>Waiting-time regression, demand forecasting, clustering of visit patterns, anomaly detection, prioritization/ranking, or queue/resource optimization. Use a time-aware split when evaluating predictions involving future time.</p></details>
+<div class="question"><small>Useful product question</small><p>“What is likely to get delayed next, why, and what should the operations team examine?”</p></div>
 </div>
 <aside class="pcol" aria-label="Track 1 datasets">
 <div class="files"><div class="files__head"><h4>Download datasets</h4><a class="btn btn--sm btn--fill" href="datasets/01_health_forgotten_patient.zip" download><svg class="icon " aria-hidden="true"><use href="#i-download"/></svg> All (.zip)</a></div>
@@ -85,7 +86,6 @@
 <div class="file__meta"><span class="chip">12,000 rows</span><span class="chip">730 KB</span></div></div>
 <div class="file"><div><b>README.txt</b><small>Joins and caveats for this track.</small></div><a class="btn btn--sm" href="datasets/01_health_forgotten_patient/README.txt" download><svg class="icon " aria-hidden="true"><use href="#i-download"/></svg> TXT</a></div>
 <p class="files__note">Synthetic educational data, not real records.</p></div>
-<div class="question"><small>Useful product question</small><p>“What is likely to get delayed next, why, and what should the operations team examine?”</p></div>
 </aside></div></section><section class="ptrack" id="track-2" role="tabpanel" aria-labelledby="tab-2" data-track="2">
 <div class="ptrack__head"><div class="track__dom"><span class="chip chip--cyan"><svg class="icon " aria-hidden="true"><use href="#i-cap"/></svg> Track 2 · Education</span><span class="chip">5 files · 36,920 rows</span></div>
 <h2 class="ptrack__title">The Campus Has Space. Students Don’t.</h2><p class="ptrack__challenge">Build a campus-space product that helps students find suitable rooms and helps administrators use existing campus space more effectively.</p></div>
@@ -96,6 +96,7 @@
 <details class="more"><summary>Full problem brief</summary><p>Universities may have classrooms, laboratories, seminar rooms, and study spaces while students and clubs still struggle to find a suitable place at the right time. Some rooms may be underused, while others are in high demand. Fixed schedules and fragmented booking information make it hard to match actual demand to available capacity and facilities.</p></details>
 <details class="more"><summary>How the data helps</summary><p>Room metadata defines capacity and facilities; schedules describe planned use; occupancy signals approximate actual use; requests represent demand; event records add non-classroom demand. Together, these allow teams to estimate utilization, identify schedule/occupancy mismatches, rank room matches, and suggest better allocations.</p></details>
 <details class="more"><summary>Possible ML / data-science work</summary><p>Occupancy estimation, availability classification, demand forecasting, room recommendation/ranking, clustering of utilization patterns, or constrained room allocation. A valid solution should account for capacity, facilities, timing, and conflicting bookings — not merely predict occupancy.</p></details>
+<div class="question"><small>Useful product question</small><p>“Given a room request, what is the best feasible room and what evidence supports that recommendation?”</p></div>
 </div>
 <aside class="pcol" aria-label="Track 2 datasets">
 <div class="files"><div class="files__head"><h4>Download datasets</h4><a class="btn btn--sm btn--fill" href="datasets/02_education_campus_space.zip" download><svg class="icon " aria-hidden="true"><use href="#i-download"/></svg> All (.zip)</a></div>
@@ -107,7 +108,6 @@
 <div class="file__meta"><span class="chip">1,800 rows</span><span class="chip">90 KB</span></div></div>
 <div class="file"><div><b>README.txt</b><small>Joins and caveats for this track.</small></div><a class="btn btn--sm" href="datasets/02_education_campus_space/README.txt" download><svg class="icon " aria-hidden="true"><use href="#i-download"/></svg> TXT</a></div>
 <p class="files__note">Synthetic educational data, not real records.</p></div>
-<div class="question"><small>Useful product question</small><p>“Given a room request, what is the best feasible room and what evidence supports that recommendation?”</p></div>
 </aside></div></section><section class="ptrack" id="track-3" role="tabpanel" aria-labelledby="tab-3" data-track="3">
 <div class="ptrack__head"><div class="track__dom"><span class="chip chip--cyan"><svg class="icon " aria-hidden="true"><use href="#i-pin"/></svg> Track 3 · Smart City</span><span class="chip">5 files · 49,000 rows</span></div>
 <h2 class="ptrack__title">Where Should We Fix First?</h2><p class="ptrack__challenge">Build a city-prioritization product that helps officials identify problem locations, understand the evidence behind their ranking, and compare possible interventions.</p></div>
@@ -118,6 +118,7 @@
 <details class="more"><summary>Full problem brief</summary><p>Cities receive reports about road damage, traffic, flooding, streetlights, drainage, and pedestrian safety. Budgets and field teams are limited, so not every issue can be handled at once. Authorities need a transparent way to combine incident history, public complaints, traffic conditions, and local context to decide which locations deserve attention first.</p></details>
 <details class="more"><summary>How the data helps</summary><p>The common <b>location_id</b> allows incidents, complaints, road conditions, traffic, and sensor readings to be brought together. Teams can aggregate repeated issues, estimate patterns over time, compare zones, and create a transparent intervention-priority list.</p></details>
 <details class="more"><summary>Possible ML / data-science work</summary><p>Incident-volume forecasting, complaint-category classification, resolution-time estimation, anomaly detection, location ranking, or resource-allocation optimization. Explain limitations and avoid claiming the synthetic coordinates represent real locations.</p></details>
+<div class="question"><small>Useful product question</small><p>“Which locations should be reviewed first, based on what evidence, and what information is still missing?”</p></div>
 </div>
 <aside class="pcol" aria-label="Track 3 datasets">
 <div class="files"><div class="files__head"><h4>Download datasets</h4><a class="btn btn--sm btn--fill" href="datasets/03_smart_city_where_fix_first.zip" download><svg class="icon " aria-hidden="true"><use href="#i-download"/></svg> All (.zip)</a></div>
@@ -129,7 +130,6 @@
 <div class="file__meta"><span class="chip">12,000 rows</span><span class="chip">642 KB</span></div></div>
 <div class="file"><div><b>README.txt</b><small>Joins and caveats for this track.</small></div><a class="btn btn--sm" href="datasets/03_smart_city_where_fix_first/README.txt" download><svg class="icon " aria-hidden="true"><use href="#i-download"/></svg> TXT</a></div>
 <p class="files__note">Synthetic educational data, not real records.</p></div>
-<div class="question"><small>Useful product question</small><p>“Which locations should be reviewed first, based on what evidence, and what information is still missing?”</p></div>
 </aside></div></section><section class="ptrack" id="track-4" role="tabpanel" aria-labelledby="tab-4" data-track="4">
 <div class="ptrack__head"><div class="track__dom"><span class="chip chip--cyan"><svg class="icon " aria-hidden="true"><use href="#i-coin"/></svg> Track 4 · Business</span><span class="chip">6 files · 37,450 rows</span></div>
 <h2 class="ptrack__title">The Money Leak</h2><p class="ptrack__challenge">Build a business decision-support product that helps a manager identify potential revenue or operational problems, investigate their likely drivers, and decide what to do next.</p></div>
@@ -140,6 +140,7 @@
 <details class="more"><summary>Full problem brief</summary><p>A business can record thousands of transactions and still struggle to understand why revenue or margin is underperforming. Cancellations, returns, discounts, stockouts, customer changes, and marketing spend can tell different parts of the story. These signals are often spread across separate systems, making it difficult to turn raw records into a clear action.</p></details>
 <details class="more"><summary>How the data helps</summary><p>Transaction records can be joined with customer and product information to study sales and status patterns. Inventory records add stock availability; campaigns add marketing context; the retail activity table adds store activity and checkout queue signals. Build a product around investigation and action rather than a generic sales chart.</p></details>
 <details class="more"><summary>Possible ML / data-science work</summary><p>Cancellation/return classification, demand forecasting, customer segmentation, anomaly detection, stockout-risk estimation, campaign conversion analysis, or inventory optimization. Document assumptions about costs, prices, returns, and profit calculations.</p></details>
+<div class="question"><small>Useful product question</small><p>“What appears to be going wrong, what evidence supports that finding, and what action should the manager consider?”</p></div>
 </div>
 <aside class="pcol" aria-label="Track 4 datasets">
 <div class="files"><div class="files__head"><h4>Download datasets</h4><a class="btn btn--sm btn--fill" href="datasets/04_business_money_leak.zip" download><svg class="icon " aria-hidden="true"><use href="#i-download"/></svg> All (.zip)</a></div>
@@ -152,7 +153,6 @@
 <div class="file__meta"><span class="chip">10,000 rows</span><span class="chip">471 KB</span></div></div>
 <div class="file"><div><b>README.txt</b><small>Joins and caveats for this track.</small></div><a class="btn btn--sm" href="datasets/04_business_money_leak/README.txt" download><svg class="icon " aria-hidden="true"><use href="#i-download"/></svg> TXT</a></div>
 <p class="files__note">Synthetic educational data, not real records.</p></div>
-<div class="question"><small>Useful product question</small><p>“What appears to be going wrong, what evidence supports that finding, and what action should the manager consider?”</p></div>
 </aside></div></section>
 </div></section></main><footer class="band band-dark footer"><div class="wrap">
 <div class="footer__logos">
