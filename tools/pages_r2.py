@@ -38,6 +38,7 @@ def make(wrapp, page_head, ic, TRACKS, REG):
 <fieldset><legend><span>01</span> Team</legend><div class="fgrid">
 {f("Team name", "team", req=True)}{f("Members (1–2)", "members", req=True, ph="Name, Name")}
 {f("Contact email", "email", "email", True)}
+<label class="fld"><span>Number of people *</span><select name="size" required><option value="">Choose</option><option value="1">1 (solo)</option><option value="2">2 (duo)</option></select></label>
 <label class="fld"><span>Track *</span><select name="track" required><option value="">Choose your track</option>{track_opts}</select></label>
 </div></fieldset>
 <fieldset><legend><span>02</span> Project &amp; GitHub</legend><div class="fgrid">

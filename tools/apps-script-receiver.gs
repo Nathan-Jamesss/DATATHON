@@ -13,6 +13,9 @@
  * (The endpoint URL is public inside config.js, so without this key anyone could read all submissions.)
  */
 var SHEET = 'Submissions';
+var TEAMS = 'Teams';
+var SUMMARY = 'Summary';
+var TRACKS = ['01 Health', '02 Education', '03 Smart City', '04 Business'];
 
 function getSheet_() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -23,12 +26,39 @@ function getSheet_() {
   return sh;
 }
 
+function getTeams_() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sh = ss.getSheetByName(TEAMS);
+  if (!sh) {
+    sh = ss.insertSheet(TEAMS);
+    sh.appendRow(['submittedAt', 'team', 'members', 'people', 'track', 'email', 'product', 'repo', 'modelType']);
+    sh.setFrozenRows(1);
+  }
+  return sh;
+}
+
+function ensureSummary_() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  if (ss.getSheetByName(SUMMARY)) return;
+  var sh = ss.insertSheet(SUMMARY);
+  sh.appendRow(['Track', 'Teams', 'People']);
+  for (var i = 0; i < TRACKS.length; i++) {
+    var r = i + 2;
+    sh.appendRow([TRACKS[i], '=COUNTIF(Teams!E:E,A' + r + ')', '=SUMIF(Teams!E:E,A' + r + ',Teams!D:D)']);
+  }
+  var t = TRACKS.length + 2;
+  sh.appendRow(['Total', '=SUM(B2:B' + (t - 1) + ')', '=SUM(C2:C' + (t - 1) + ')']);
+  sh.setFrozenRows(1);
+}
+
 function doPost(e) {
   if (e.postData.contents.length > 200000) return ContentService.createTextOutput('too large');
   var d = JSON.parse(e.postData.contents);
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
   getSheet_().appendRow([d.submittedAt, d.team, d.track, d.repo, d.modelType, (d.apis || []).join(', '), d.email, JSON.stringify(d)]);
+  getTeams_().appendRow([d.submittedAt, d.team, d.members, Number(d.size) || '', d.track, d.email, d.product, d.repo, d.modelType]);
+  ensureSummary_();
   lock.releaseLock();
   return ContentService.createTextOutput('ok');
 }

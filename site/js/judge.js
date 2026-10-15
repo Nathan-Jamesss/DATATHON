@@ -37,7 +37,7 @@
 
   function card(s) {
     var m = s.modelDetails || {}, S = sc(s.id);
-    var det = [['Product', s.product], ['Pitch', s.pitch], ['Members', s.members], ['Demo', s.demo], ['Model task', m.task], ['Algorithm', m.algo], ['Target', m.target], ['Features', m.features], ['Split', m.split], ['Baseline', m.baseline], ['Final metric', m.metric], ['Training code', m.trainPath], ['Model file', m.modelPath],
+    var det = [['Product', s.product], ['Pitch', s.pitch], ['Members', s.members], ['Team size', s.size], ['Demo', s.demo], ['Model task', m.task], ['Algorithm', m.algo], ['Target', m.target], ['Features', m.features], ['Split', m.split], ['Baseline', m.baseline], ['Final metric', m.metric], ['Training code', m.trainPath], ['Model file', m.modelPath],
       ['APIs used', (s.apis || []).concat(s.apiOther ? [s.apiOther] : []).join(', ')], ['API purpose', s.apiUse], ['Extra data', s.extraData], ['How to run', s.howToRun]]
       .filter(function (r) { return r[1]; }).map(function (r) { return '<dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd>'; }).join('');
     return '<article class="jcard" data-id="' + esc(s.id) + '"><header><div><h3>' + esc(s.team || s.repo) + '</h3><div class="chips"><span class="chip">' + esc(s.track || 'track ?') + '</span><span class="chip chip--cyan">' + esc(CLAIM[s.modelType] || 'Claim: not stated') + '</span></div></div>' +

@@ -43,7 +43,7 @@
       id: 'r2-' + Date.now().toString(36),
       submittedAt: new Date().toISOString(),
       round: 2,
-      team: o.team || '', members: o.members || '', email: o.email || '', track: o.track || '',
+      team: o.team || '', members: o.members || '', size: o.size || '', email: o.email || '', track: o.track || '',
       product: o.product || '', pitch: o.pitch || '', repo: (o.repo || '').trim(), demo: o.demo || '',
       modelType: o.modelType || '',
       modelDetails: { algo: o.algo || '', task: o.task || '', target: o.target || '', features: o.features || '', split: o.split || '', baseline: o.baseline || '', metric: o.metric || '', trainPath: o.trainPath || '', modelPath: o.modelPath || '' },
