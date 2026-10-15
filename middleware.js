@@ -16,18 +16,21 @@ function lockedPage() {
 <style>
 *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:#000;color:#fff;font-family:Inter,system-ui,sans-serif;padding:24px;text-align:center}
 .eyebrow{font-weight:800;letter-spacing:.32em;text-transform:uppercase;font-size:12px;color:#19e3f5}
-h1{font-family:'Archivo Black',Impact,sans-serif;font-weight:400;text-transform:uppercase;line-height:.85;font-size:clamp(44px,11vw,150px);margin:22px 0}
-h1 span{color:#19e3f5}
-p{color:#a9b4b6;max-width:46ch;margin:0 auto 28px;font-size:18px}
+h1{font-family:'Archivo Black',Impact,sans-serif;font-weight:400;text-transform:uppercase;line-height:.9;font-size:clamp(28px,6.2vw,84px);margin:18px 0 8px}
+.at{font-family:'Archivo Black',Impact,sans-serif;text-transform:uppercase;color:#19e3f5;font-size:clamp(22px,4.2vw,54px);line-height:1;white-space:nowrap;margin:0 0 22px}
+.logos{display:flex;gap:clamp(20px,5vw,56px);justify-content:center;align-items:center;margin-bottom:34px}.logos img{height:clamp(46px,7vw,76px);width:auto}
+p{color:#a9b4b6;max-width:46ch;margin:0 auto 24px;font-size:16px}
 .cd{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
-.c{border:1px solid rgba(255,255,255,.35);border-radius:24px;padding:18px 10px;min-width:92px}
-.c b{display:block;font:400 clamp(34px,7vw,72px)/.9 'Archivo Black',Impact,sans-serif;color:#19e3f5}
+.c{border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:14px 8px;min-width:80px}
+.c b{display:block;font:400 clamp(28px,5.5vw,56px)/.9 'Archivo Black',Impact,sans-serif;color:#19e3f5}
 .c small{display:block;margin-top:8px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#a9b4b6}
 a{display:inline-block;color:#fff;border:1px solid #fff;border-radius:999px;padding:14px 26px;text-decoration:none;font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
 a:hover{background:#fff;color:#000}
 </style></head><body><main>
+<div class="logos"><img src="/assets/logo-dsc.png" alt="Data Science Club VIT-AP"><img src="/assets/logo-iiec.png" alt="IIEC"></div>
 <div class="eyebrow">Locked until release</div>
-<h1>Problem<br>statements<br>drop at <span>10:00 AM</span></h1>
+<h1>Problem statements</h1>
+<div class="at">Drops at 10:00 AM</div>
 <p>Friday 16 October 2026, 10:00 AM IST. Problem statements and datasets unlock for everyone at the same moment.</p>
 <div class="cd" id="cd"></div>
 <a href="/">Back to home</a>
