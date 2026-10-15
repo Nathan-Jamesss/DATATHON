@@ -20,8 +20,8 @@ h1{font-family:'Archivo Black',Impact,sans-serif;font-weight:400;text-transform:
 .at{font-family:'Archivo Black',Impact,sans-serif;text-transform:uppercase;color:#19e3f5;font-size:clamp(22px,4.2vw,54px);line-height:1;white-space:nowrap;margin:0 0 22px}
 .logos{display:flex;gap:clamp(20px,5vw,56px);justify-content:center;align-items:center;margin-bottom:34px}.logos img{height:clamp(46px,7vw,76px);width:auto}
 p{color:#a9b4b6;max-width:46ch;margin:0 auto 24px;font-size:16px}
-.cd{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
-.c{border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:14px 8px;min-width:80px}
+.cd{display:flex;gap:clamp(6px,2vw,12px);justify-content:center;flex-wrap:nowrap;margin:0 auto 32px;max-width:520px}
+.c{flex:1;min-width:0;border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:14px 4px}
 .c b{display:block;font:400 clamp(28px,5.5vw,56px)/.9 'Archivo Black',Impact,sans-serif;color:#19e3f5}
 .c small{display:block;margin-top:8px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#a9b4b6}
 a{display:inline-block;color:#fff;border:1px solid #fff;border-radius:999px;padding:14px 26px;text-decoration:none;font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
