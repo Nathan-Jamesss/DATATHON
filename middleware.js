@@ -1,17 +1,18 @@
-// Release gate (runs on Vercel's servers, so it can't be bypassed from the browser).
-// Until RELEASE_AT, the problem-statements page and every dataset file are blocked.
-// To change the time, edit RELEASE_AT and push. Nothing else to touch.
-const RELEASE_AT = Date.parse('2026-10-16T10:00:00+05:30'); // 16 Oct 2026, 10:00 AM IST
+// Release gates (run on Vercel's servers, so they can't be bypassed from the browser).
+// Until each release time the gated pages show a countdown (datasets return 403).
+// To change a time, edit the date below and push. Nothing else to touch.
+const PROBLEMS_AT = Date.parse('2026-10-16T10:00:00+05:30'); // Fri 16 Oct 2026, 10:00 AM IST
+const ROUND2_AT = Date.parse('2026-10-16T13:00:00+05:30');   // Fri 16 Oct 2026,  1:00 PM IST
 
 export const config = {
-  matcher: ['/problem-statements', '/problem-statements.html', '/datasets/:path*'],
+  matcher: ['/problem-statements', '/problem-statements.html', '/datasets/:path*', '/round2', '/round2.html'],
 };
 
 const PASS = () => new Response(null, { headers: { 'x-middleware-next': '1' } });
 
-function lockedPage() {
+function lockedPage({ title, at, text, release }) {
   const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Problem Statements · DATATHON 2026</title><meta name="robots" content="noindex">
+<title>${title} · DATATHON 2026</title><meta name="robots" content="noindex">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@500;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:#000;color:#fff;font-family:Inter,system-ui,sans-serif;padding:24px;text-align:center}
@@ -29,14 +30,14 @@ a:hover{background:#fff;color:#000}
 </style></head><body><main>
 <div class="logos"><img src="/assets/logo-dsc.png" alt="Data Science Club VIT-AP"><img src="/assets/logo-iiec.png" alt="IIEC"></div>
 <div class="eyebrow">Locked until release</div>
-<h1>Problem statements</h1>
-<div class="at">Drops at 10:00 AM</div>
-<p>Friday 16 October 2026, 10:00 AM IST. Problem statements and datasets unlock for everyone at the same moment.</p>
+<h1>${title}</h1>
+<div class="at">${at}</div>
+<p>${text}</p>
 <div class="cd" id="cd"></div>
 <a href="/">Back to home</a>
 </main>
 <script>
-var T=${RELEASE_AT};
+var T=${release};
 function pad(n){return n<10?'0'+n:''+n}
 function tick(){var s=Math.floor((T-Date.now())/1000);
 if(s<=0){document.getElementById('cd').innerHTML='<div class="c"><b>Live</b><small>reloading</small></div>';setTimeout(function(){location.reload()},1500);return}
@@ -51,13 +52,27 @@ tick();setInterval(tick,1000);
 }
 
 export default function middleware(request) {
-  if (Date.now() >= RELEASE_AT) return PASS();
   const { pathname } = new URL(request.url);
+  const now = Date.now();
+
+  if (pathname.startsWith('/round2')) {
+    if (now >= ROUND2_AT) return PASS();
+    return lockedPage({
+      title: 'Round 2', at: 'Opens at 1:00 PM', release: ROUND2_AT,
+      text: 'Friday 16 October 2026, 1:00 PM IST. The Round 2 submission page opens for everyone at the same moment.',
+    });
+  }
+
+  // problem statements page + datasets
+  if (now >= PROBLEMS_AT) return PASS();
   if (pathname.startsWith('/datasets')) {
     return new Response('Locked until 16 Oct 2026, 10:00 AM IST.', {
       status: 403,
       headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' },
     });
   }
-  return lockedPage();
+  return lockedPage({
+    title: 'Problem statements', at: 'Drops at 10:00 AM', release: PROBLEMS_AT,
+    text: 'Friday 16 October 2026, 10:00 AM IST. Problem statements and datasets unlock for everyone at the same moment.',
+  });
 }
