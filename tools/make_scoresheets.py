@@ -17,9 +17,9 @@ os.makedirs(OUT, exist_ok=True)
 
 TRACKS = ["01 Health", "02 Education", "03 Smart City", "04 Business"]
 ROUNDS = {
-    1: dict(title="Round 1 · PPT + Base Prototype", file="DATATHON-Round1-Judge-Sheet.docx", shortlist=True,
+    1: dict(title="Round 1 · PPT + Base Prototype", file="DATATHON-Round1-Judge-Sheet.docx", shortlist=False,
             crit=[("Problem & target user", 25), ("Idea / solution & USP", 40), ("Feasibility & MVP plan", 25), ("Base prototype", 10)],
-            widths=[1.0, 5.4, 2.5, 2.4, 2.4, 2.4, 2.4, 2.1, 2.2, 3.9]),
+            widths=[1.0, 6.0, 2.8, 2.7, 2.7, 2.7, 2.4, 2.4, 4.0]),
     # Round 2: website weights grouped into 5 segments (10+10, 15+25, 20, 10+5, 5)
     2: dict(title="Round 2 · Complete Prototype", file="DATATHON-Round2-Judge-Sheet.docx", shortlist=False,
             crit=[("Problem & data use", 20), ("ML model (from scratch scores most)", 40), ("Working product", 20), ("USP, impact & feasibility", 15), ("Demo & pitch", 5)],
