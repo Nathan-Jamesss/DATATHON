@@ -110,13 +110,13 @@ def home_page():
 <div class="hero__sub"><span>From data to</span><span class="hl">Deployable</span><span>ideas</span></div>
 <div class="chain">{chain}</div>
 <div class="bento">
-<div class="bcell b-date"><small>Friday</small><b>16 Oct 2026</b><span>9:00 AM – 6:00 PM · VIT-AP University · venue updating soon</span></div>
+<div class="bcell b-date"><small>Friday</small><b>16 Oct 2026</b><span>9:00 AM – 6:00 PM · Venue: CB G20, VIT-AP University</span></div>
 <div class="bcell b-prize"><small>Prize pool</small><b>₹4,500</b><span>1st ₹2,000 · 2nd ₹1,500 · 3rd ₹1,000</span></div>
 <div class="bcell b-team"><small>Teams</small><b>Solo or Duo</b><span>1–2 members · OD provided</span></div>
 <div class="bcell b-rounds"><a class="round" href="ppt.html"><small>Round 1 · 10 AM–12 PM</small><b>PPT + base prototype</b></a><span class="round__arrow" aria-hidden="true">→</span><a class="round" href="round2.html"><small>Round 2 · till 4 PM</small><b>Complete prototype</b></a></div>
 <a class="bcell b-reg" href="{REG}" target="_blank" rel="noopener"><img src="assets/qr.png" alt="Registration QR code" width="96" height="96"><div><b>Register</b><span>Scan or tap {ic('arrow')}</span></div></a>
 </div>
-<div class="bigcount"><div class="bigcount__label"><small>Starts in</small><span>Fri 16 Oct 2026 · 9:00 AM · VIT-AP University</span></div><div class="countdown" id="countdown" data-target="2026-10-16T09:00:00+05:30" aria-live="off"></div></div>
+<div class="bigcount"><div class="bigcount__label"><small>Starts in</small><span>Fri 16 Oct 2026 · 9:00 AM · CB G20, VIT-AP University</span></div><div class="countdown" id="countdown" data-target="2026-10-16T09:00:00+05:30" aria-live="off"></div></div>
 </div></section>"""
     tiles = "".join(f'<a class="card tile {b}" href="{h}" style="background:var(--bg);color:var(--fg);--line:{ "#fff" if b=="band-dark" else "#000"}"><div class="tile__top"><span class="tile__no">{n}</span><span class="tile__badge">{ic(i)}</span></div><h3>{t}</h3><p>{d}</p><span class="tile__go">Open {ic("arrow")}</span></a>' for n, h, i, t, d, b in TILES)
     body = hero + f"""

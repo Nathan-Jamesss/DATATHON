@@ -48,7 +48,7 @@ def head(title, desc):
 {SPRITE}
 """
 
-MARQ_ITEMS = ["DATATHON 2026", "Fri 16 Oct 2026 · 9:00 AM – 6:00 PM", "From Data to Deployable Ideas", "Solo or Duo · OD provided", "Prize pool ₹4,500", "VIT-AP University", "Organised by Data Science Club × IIEC"]
+MARQ_ITEMS = ["DATATHON 2026", "Fri 16 Oct 2026 · 9:00 AM – 6:00 PM", "From Data to Deployable Ideas", "Solo or Duo · OD provided", "Prize pool ₹4,500", "Venue CB G20, VIT-AP University", "Organised by Data Science Club × IIEC"]
 def marquee():
     one = "".join(f"<span>{m}</span>" for m in MARQ_ITEMS)
     return f'<div class="marquee" aria-label="Datathon announcements"><div class="marquee__track">{one}{one}{one}{one}</div></div>'
@@ -76,7 +76,7 @@ def footer():
 <img src="assets/logo-iiec.png" alt="IIEC">
 </div>
 <div class="display footer__big" aria-hidden="true">DATA<span class="t">T</span>HON</div>
-<div class="footer__meta"><span>Organised by Data Science Club (DSC)</span><span>In collaboration with IIEC</span><span>Fri 16 Oct 2026 · VIT-AP University</span></div>
+<div class="footer__meta"><span>Organised by Data Science Club (DSC)</span><span>In collaboration with IIEC</span><span>Fri 16 Oct 2026 · CB G20, VIT-AP University</span></div>
 </div></footer>
 <script src="js/site.js"></script>
 </body>
@@ -184,7 +184,7 @@ def home():
 <div class="quote-bar"><p class="lede">Explore data. Solve real-world problems. Build a working product.</p><p class="muted">Think like a product team: users, solution, USP, ML.</p></div>
 <div class="info-list">
 <div class="info"><span class="info__ico">{ic('calendar')}</span><div class="info__body"><strong>Friday, 16 October 2026</strong><span>9:00 AM – 6:00 PM</span></div></div>
-<div class="info"><span class="info__ico">{ic('pin')}</span><div class="info__body"><strong>Venue: Updating soon</strong><span>VIT-AP University</span></div></div>
+<div class="info"><span class="info__ico">{ic('pin')}</span><div class="info__body"><strong>Venue: CB G20</strong><span>VIT-AP University</span></div></div>
 <div class="info"><span class="info__ico">{ic('users')}</span><div class="info__body"><strong>Solo or Duo</strong><span>Teams of 1–2 members</span><span><span class="hl" style="font-size:13px;font-weight:800;letter-spacing:.03em">OD WILL BE PROVIDED</span></span></div></div>
 </div>
 <div class="hero__actions">
