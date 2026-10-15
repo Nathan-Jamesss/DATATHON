@@ -45,7 +45,6 @@ def make(wrapp, page_head, ic, TRACKS, REG):
 {f("Product name", "product", req=True)}{f("One-line pitch (optional)", "pitch")}
 <label class="fld fld--wide"><span>GitHub repository URL *</span><div class="inline"><input type="url" name="repo" placeholder="https://github.com/team/project" required><button type="button" class="btn btn--fill" id="verify">Check repo</button></div><small>Must be public. “Check repo” is optional: it scans for model files, training code and API usage to help judges.</small></label>
 <div id="evidence" class="fld--wide"></div>
-{f("Live demo / video link (optional)", "demo", "url", span=True)}
 </div></fieldset>
 <fieldset><legend><span>03</span> Your ML model</legend>
 <div class="opts" role="radiogroup" aria-label="Model type">{radios}</div>
