@@ -49,6 +49,18 @@
 <div class="page-head__logos"><img src="assets/logo-dsc.png" alt="Data Science Club VIT-AP"><img src="assets/logo-iiec.png" alt="IIEC"></div></div>
 <p class="lede">Round 2 is the complete prototype. Share your public GitHub repository and tell us exactly how your model was built. Judges check the code.</p></div></section><section class="band band-wash band--tight"><div class="wrap">
 <div class="r2info"><div class="r2step"><span>1</span><div><b>Public GitHub repo</b><small>Code, README and run steps.</small></div></div><div class="r2step"><span>2</span><div><b>Your model</b><small>Trained from scratch scores highest. API-key-only scores lowest.</small></div></div><div class="r2step"><span>3</span><div><b>Declare APIs & data</b><small>Every API, pretrained model and extra dataset.</small></div></div><div class="r2step"><span>4</span><div><b>Submit by 4:00 PM</b><small>Friday 16 October 2026.</small></div></div></div>
+<div class="r2check">
+<h3>Before you submit — your repo is judged automatically</h3>
+<p>There is no live demo. Judges (and an AI evaluator) read only your GitHub repo, so make sure:</p>
+<ul>
+<li><b>Public repo.</b> Press <b>Check repo</b> below; it must find your repo. Private repos cannot be judged.</li>
+<li><b>Code is on the main branch</b> (or type your branch name below).</li>
+<li><b>README</b> explains the problem, the target user, and <b>how to run</b> the project.</li>
+<li><b>README has screenshots</b> of your product (and sample outputs). No video needed.</li>
+<li><b>Training code and data loading are in the repo</b>, using this track's dataset files — not only on your laptop.</li>
+<li>Your <b>last commit before 4:00 PM</b> is what gets judged. Later pushes are ignored.</li>
+</ul>
+</div>
 <form id="r2form" class="r2form" novalidate>
 <fieldset><legend><span>01</span> Team</legend><div class="fgrid">
 <label class="fld"><span>Team name *</span><input type="text" name="team" placeholder="" required></label><label class="fld"><span>Members (1–2) *</span><input type="text" name="members" placeholder="Name, Name" required></label>
@@ -59,6 +71,7 @@
 <fieldset><legend><span>02</span> Project &amp; GitHub</legend><div class="fgrid">
 <label class="fld"><span>Product name *</span><input type="text" name="product" placeholder="" required></label><label class="fld"><span>One-line pitch (optional)</span><input type="text" name="pitch" placeholder=""></label>
 <label class="fld fld--wide"><span>GitHub repository URL *</span><div class="inline"><input type="url" name="repo" placeholder="https://github.com/team/project" required><button type="button" class="btn btn--fill" id="verify">Check repo</button></div><small>Must be public. “Check repo” is optional: it scans for model files, training code and API usage to help judges.</small></label>
+<label class="fld"><span>Branch (only if your code is not on main)</span><input type="text" name="branch" placeholder="main"></label>
 <div id="evidence" class="fld--wide"></div>
 </div></fieldset>
 <fieldset><legend><span>03</span> Your ML model</legend>
