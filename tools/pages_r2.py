@@ -27,10 +27,10 @@ def make(wrapp, page_head, ic, TRACKS, REG):
     decl_boxes = "".join(f'<label class="chk chk--block"><input type="checkbox" name="decl" value="{d}" required><span>{d}</span></label>' for d in decls)
 
     def round2_page():
-        body = page_head("Round 2 · complete prototype · due 4:00 PM", "Submit your <span class=\"t\">repo</span>",
+        body = page_head("Round 2 · complete prototype · due 4:30 PM", "Submit your <span class=\"t\">repo</span>",
                          "Round 2 is the complete prototype. Share your public GitHub repository and tell us exactly how your model was built. Judges check the code.")
         steps = [("1", "Public GitHub repo", "Code, README and run steps."), ("2", "Your model", "Trained from scratch scores highest. API-key-only scores lowest."),
-                 ("3", "Declare APIs & data", "Every API, pretrained model and extra dataset."), ("4", "Submit by 4:00 PM", "Friday 16 October 2026.")]
+                 ("3", "Declare APIs & data", "Every API, pretrained model and extra dataset."), ("4", "Submit by 4:30 PM", "Friday 16 October 2026.")]
         info = "".join(f'<div class="r2step"><span>{n}</span><div><b>{t}</b><small>{d}</small></div></div>' for n, t, d in steps)
         body += f"""<section class="band band-wash band--tight"><div class="wrap">
 <div class="r2info">{info}</div>
@@ -43,7 +43,7 @@ def make(wrapp, page_head, ic, TRACKS, REG):
 <li><b>README</b> explains the problem, the target user, and <b>how to run</b> the project.</li>
 <li><b>README has screenshots</b> of your product (and sample outputs). No video needed.</li>
 <li><b>Training code and data loading are in the repo</b>, using this track's dataset files — not only on your laptop.</li>
-<li>Your <b>last commit before 4:00 PM</b> is what gets judged. Later pushes are ignored.</li>
+<li>Your <b>last commit before 4:30 PM</b> is what gets judged. Later pushes are ignored.</li>
 </ul>
 </div>
 <form id="r2form" class="r2form" novalidate>

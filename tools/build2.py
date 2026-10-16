@@ -46,7 +46,7 @@ SHORT = {
  "Round 1 · PPT + Base Prototype": "Idea PPT (USP + MVP mandatory) plus a base prototype on the dataset.",
  "Evaluation + Elimination Round": "Judges review Round 1. Only shortlisted teams advance.",
  "Lunch Break": "Refuel before the final push.",
- "Round 2 · Complete Prototype": "Finish the complete prototype by 4:00 PM: model + working product.",
+ "Round 2 · Complete Prototype": "Finish the complete prototype by 4:30 PM: model + working product.",
  "Round 2 Demos & Judging": "Live demo of the complete prototype, scored on the 100-mark rubric.",
  "Winner Declaration": "Results across all four tracks.",
  "Closing": "Prize distribution, photos and the closing note.",
@@ -71,7 +71,7 @@ def tcards():
     return f'<ol class="tl" style="list-style:none;padding:0">{"".join(out)}</ol>'
 
 def timeline_page():
-    body = page_head("Fri 16 Oct 2026 · 9:00 AM – 6:00 PM", "The day <span class=\"t\">plan</span>", "Follow the arrows: opening → Round 1 (PPT + base prototype) → elimination → Round 2 (complete prototype by 4 PM) → winners.")
+    body = page_head("Fri 16 Oct 2026 · 9:00 AM – 6:00 PM", "The day <span class=\"t\">plan</span>", "Follow the arrows: opening → Round 1 (PPT + base prototype) → elimination → Round 2 (complete prototype by 4:30 PM) → winners.")
     body += f'<section class="band band-wash band--tight"><div class="wrap">{tcards()}</div></section>'
     return wrapp("timeline", "Timeline · DATATHON 2026", "DATATHON event itinerary for 16 October 2026.", body)
 
@@ -95,7 +95,7 @@ TILES = [
  ("01", "timeline.html", "clock", "Timeline", "Full itinerary with arrows, 9 AM to 6 PM.", "band-cyan"),
  ("02", "problem-statements.html", "db", "Problem Statements", "Unlocks Fri 16 Oct at 9:45 AM, with a live countdown.", "band-wash"),
  ("03", "ppt.html", "file", "Round 1 PPT", "Idea PPT + base prototype. USP + MVP are mandatory.", "band-dark"),
- ("04", "round2.html", "cube", "Round 2", "Submit your GitHub repo and model details by 4 PM.", "band-cyan"),
+ ("04", "round2.html", "cube", "Round 2", "Submit your GitHub repo and model details by 4:30 PM.", "band-cyan"),
  ("05", "judging.html", "trophy", "Judging & Prizes", "100-mark rubric (from-scratch ML scores highest) and the ₹4,500 pool.", "band-wash"),
  ("06", "rules.html", "check", "Rules", "The 15 rules every team follows.", "band-dark"),
 ]
@@ -113,7 +113,7 @@ def home_page():
 <div class="bcell b-date"><small>Friday</small><b>16 Oct 2026</b><span>9:00 AM – 6:00 PM · Venue: CB G20, VIT-AP University</span></div>
 <div class="bcell b-prize"><small>Prize pool</small><b>₹4,500</b><span>1st ₹2,000 · 2nd ₹1,500 · 3rd ₹1,000</span></div>
 <div class="bcell b-team"><small>Teams</small><b>Solo or Duo</b><span>1–2 members · OD provided</span></div>
-<div class="bcell b-rounds"><a class="round" href="ppt.html"><small>Round 1 · 10 AM–12 PM</small><b>PPT + base prototype</b></a><span class="round__arrow" aria-hidden="true">→</span><a class="round" href="round2.html"><small>Round 2 · till 4 PM</small><b>Complete prototype</b></a></div>
+<div class="bcell b-rounds"><a class="round" href="ppt.html"><small>Round 1 · 10 AM–12 PM</small><b>PPT + base prototype</b></a><span class="round__arrow" aria-hidden="true">→</span><a class="round" href="round2.html"><small>Round 2 · till 4:30 PM</small><b>Complete prototype</b></a></div>
 <a class="bcell b-reg" href="{REG}" target="_blank" rel="noopener"><img src="assets/qr.png" alt="Registration QR code" width="96" height="96"><div><b>Register</b><span>Scan or tap {ic('arrow')}</span></div></a>
 </div>
 <div class="bigcount"><div class="bigcount__label"><small>Starts in</small><span>Fri 16 Oct 2026 · 9:00 AM · CB G20, VIT-AP University</span></div><div class="countdown" id="countdown" data-target="2026-10-16T09:00:00+05:30" aria-live="off"></div></div>
@@ -131,7 +131,7 @@ def home_page():
 
 # ---------------- ppt ----------------
 def ppt_page():
-    body = page_head("Round 1 · 10:00 AM – 12:00 PM", "Idea <span class=\"t\">PPT</span> round", "Round 1 = this PPT plus a base prototype. Round 2 (by 4:00 PM) is the complete prototype. Sections marked MUST are mandatory.")
+    body = page_head("Round 1 · 10:00 AM – 12:00 PM", "Idea <span class=\"t\">PPT</span> round", "Round 1 = this PPT plus a base prototype. Round 2 (by 4:30 PM) is the complete prototype. Sections marked MUST are mandatory.")
     slides = "".join(f'<li><div><b>{t}{" <span class=must>MUST</span>" if m else ""}</b><span>{d}</span></div></li>' for t, d, m in PPT_SLIDES)
     body += f"""<section class="band band-wash band--tight"><div class="wrap"><div class="ppt-layout">
 <div class="stack">
