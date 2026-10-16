@@ -74,6 +74,8 @@
 <div class="chks"><label class="chk"><input type="checkbox" name="api" value="OpenAI"><span>OpenAI</span></label><label class="chk"><input type="checkbox" name="api" value="Anthropic Claude"><span>Anthropic Claude</span></label><label class="chk"><input type="checkbox" name="api" value="Google Gemini"><span>Google Gemini</span></label><label class="chk"><input type="checkbox" name="api" value="Groq"><span>Groq</span></label><label class="chk"><input type="checkbox" name="api" value="Hugging Face Inference"><span>Hugging Face Inference</span></label><label class="chk"><input type="checkbox" name="api" value="Cohere"><span>Cohere</span></label><label class="chk"><input type="checkbox" name="api" value="Other"><span>Other</span></label><label class="chk"><input type="checkbox" name="api" value="None"><span>None</span></label></div>
 <div class="fgrid" style="margin-top:14px">
 <label class="fld fld--wide"><span>Any extra data you used? (optional)</span><input type="text" name="extraData" placeholder=""></label>
+<label class="fld fld--wide"><span>Which dataset files does your code use? (optional)</span><input type="text" name="datasetsUsed" placeholder="e.g. encounters.csv, patients.csv"></label>
+<label class="fld fld--wide"><span>How to run your project, one line (optional)</span><input type="text" name="howToRun" placeholder="e.g. pip install -r requirements.txt && streamlit run app.py"></label>
 </div>
 <div class="notice"><svg class="icon " aria-hidden="true"><use href="#i-info"/></svg><span>Never commit API keys. Keep them in a <b>.env</b> file listed in <b>.gitignore</b>. Keys found in a public repo are flagged to judges.</span></div>
 </fieldset>

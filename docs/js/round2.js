@@ -48,7 +48,7 @@
       modelType: o.modelType || '',
       modelDetails: { algo: o.algo || '', task: o.task || '', target: o.target || '', features: o.features || '', split: o.split || '', baseline: o.baseline || '', metric: o.metric || '', trainPath: o.trainPath || '', modelPath: o.modelPath || '' },
       apis: apis, apiOther: o.apiOther || '', apiUse: o.apiUse || '',
-      extraData: o.extraData || '', howToRun: o.howToRun || '',
+      extraData: o.extraData || '', howToRun: o.howToRun || '', datasetsUsed: o.datasetsUsed || '',
       declarations: arr(o.decl),
       evidence: evidence && evidence.ok ? evidence : null
     };

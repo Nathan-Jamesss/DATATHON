@@ -8,3 +8,6 @@ DATATHON_Event_Proposal_Final.docx
 
 .vercel
 .env*
+
+# private team exports
+site/css/data team

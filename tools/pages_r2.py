@@ -59,6 +59,8 @@ def make(wrapp, page_head, ic, TRACKS, REG):
 <div class="chks">{api_boxes}</div>
 <div class="fgrid" style="margin-top:14px">
 {f("Any extra data you used? (optional)", "extraData", span=True)}
+{f("Which dataset files does your code use? (optional)", "datasetsUsed", span=True, ph="e.g. encounters.csv, patients.csv")}
+{f("How to run your project, one line (optional)", "howToRun", span=True, ph="e.g. pip install -r requirements.txt && streamlit run app.py")}
 </div>
 <div class="notice">{ic('info')}<span>Never commit API keys. Keep them in a <b>.env</b> file listed in <b>.gitignore</b>. Keys found in a public repo are flagged to judges.</span></div>
 </fieldset>
