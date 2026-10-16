@@ -17,7 +17,8 @@
       var duo = size.value === '2';
       f('members').value = [f('m1name').value, duo ? f('m2name').value : ''].map(function (s) { return s.trim(); }).filter(Boolean).join(', ');
       f('regNos').value = [f('m1reg').value, duo ? f('m2reg').value : ''].map(function (s) { return s.trim().toUpperCase(); }).filter(Boolean).join(', ');
-      f('phones').value = [f('m1phone').value, duo ? f('m2phone').value : ''].map(function (s) { return s.trim(); }).filter(Boolean).join(', ');
+      var tidy = function (s) { var d = (s || '').replace(/\D/g, ''); if (d.length === 12 && d.indexOf('91') === 0) d = d.slice(2); if (d.length === 11 && d[0] === '0') d = d.slice(1); return d; };
+      f('phones').value = [f('m1phone').value, duo ? f('m2phone').value : ''].map(tidy).filter(Boolean).join(', ');
     }
     // values pre-filled by other scripts (saved team / draft) arrive in the hidden fields: split them back out
     function split() {

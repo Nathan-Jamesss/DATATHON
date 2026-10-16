@@ -35,11 +35,14 @@ function getTab_(name, head) {
 }
 
 // One row per team in "Teams": a team that registers on the Problem Statements page and later submits Round 2 is updated, not duplicated.
+// Leading apostrophe = store as plain text in Sheets (no 9.88E+09, no '+91' formula errors).
+function txt_(v) { return v ? "'" + v : ''; }
+
 function upsertTeam_(d) {
   var sh = getTab_(TEAMS, TEAM_HEAD);
   var rows = sh.getDataRange().getValues();
   var name = String(d.team || '').trim().toLowerCase();
-  var vals = [d.team, d.track, d.members, Number(d.size) || '', d.regNos || '', d.phones || ''];
+  var vals = [d.team, d.track, d.members, Number(d.size) || '', txt_(d.regNos), txt_(d.phones)];
   for (var i = 1; i < rows.length; i++) {
     if (String(rows[i][0]).trim().toLowerCase() === name) { sh.getRange(i + 1, 1, 1, vals.length).setValues([vals]); return; }
   }
@@ -57,7 +60,7 @@ function doPost(e) {
   getTab_(SUBMISSIONS, SUB_HEAD).appendRow([
     d.submittedAt, d.team, d.track, d.product, d.repo, d.demo, d.modelType,
     m.task || '', m.algo || '', m.trainPath || '',
-    (d.apis || []).join(', '), d.apiUse || '', d.extraData || '', d.email, JSON.stringify(d), d.regNos || '', d.phones || ''
+    (d.apis || []).join(', '), d.apiUse || '', d.extraData || '', d.email, JSON.stringify(d), txt_(d.regNos), txt_(d.phones)
   ]);
   lock.releaseLock();
   return ContentService.createTextOutput('ok');
