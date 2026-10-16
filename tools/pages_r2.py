@@ -48,7 +48,7 @@ def make(wrapp, page_head, ic, TRACKS, REG):
 </div>
 <form id="r2form" class="r2form" novalidate>
 <fieldset><legend><span>01</span> Team</legend><div class="fgrid">
-{f("Team name", "team", req=True)}{f("Members (1–2)", "members", req=True, ph="Name, Name")}
+{f("Team name", "team", req=True)}{f("Members (1–2)", "members", req=True, ph="Name, Name")}{f("Registration number(s) *", "regNos", req=True, ph="e.g. 23BCE1234, 23BCE5678")}
 {f("Contact email", "email", "email", True)}
 <label class="fld"><span>Number of people *</span><select name="size" required><option value="">Choose</option><option value="1">1 (solo)</option><option value="2">2 (duo)</option></select></label>
 <label class="fld"><span>Track *</span><select name="track" required><option value="">Choose your track</option>{track_opts}</select></label>

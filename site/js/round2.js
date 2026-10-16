@@ -43,7 +43,7 @@
       id: 'r2-' + Date.now().toString(36),
       submittedAt: new Date().toISOString(),
       round: 2,
-      team: o.team || '', members: o.members || '', size: o.size || '', email: o.email || '', track: o.track || '',
+      team: o.team || '', members: o.members || '', regNos: o.regNos || '', size: o.size || '', email: o.email || '', track: o.track || '',
       product: o.product || '', pitch: o.pitch || '', repo: (o.repo || '').trim(), branch: (o.branch || '').trim(), demo: o.demo || '',
       modelType: o.modelType || '',
       modelDetails: { algo: o.algo || '', task: o.task || '', target: o.target || '', features: o.features || '', split: o.split || '', baseline: o.baseline || '', metric: o.metric || '', trainPath: o.trainPath || '', modelPath: o.modelPath || '' },
@@ -57,7 +57,7 @@
   // prefill from the team registration on the Problem Statements page
   try {
     var tm = JSON.parse(localStorage.getItem('dt_team') || 'null');
-    if (tm) ['team', 'members', 'email', 'size', 'track'].forEach(function (k) { var el = form.elements[k]; if (el && !el.value && tm[k]) el.value = tm[k]; });
+    if (tm) ['team', 'members', 'regNos', 'email', 'size', 'track'].forEach(function (k) { var el = form.elements[k]; if (el && !el.value && tm[k]) el.value = tm[k]; });
   } catch (e) {}
 
   var verifyBtn = document.getElementById('verify');

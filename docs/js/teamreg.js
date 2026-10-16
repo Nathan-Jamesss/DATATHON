@@ -7,7 +7,7 @@
 
   try {
     var saved = JSON.parse(localStorage.getItem(KEY) || 'null');
-    if (saved) ['team', 'members', 'email', 'size', 'track'].forEach(function (k) { if (form.elements[k] && saved[k]) form.elements[k].value = saved[k]; });
+    if (saved) ['team', 'members', 'regNos', 'email', 'size', 'track'].forEach(function (k) { if (form.elements[k] && saved[k]) form.elements[k].value = saved[k]; });
   } catch (e) {}
 
   function show(msg, ok) {
@@ -20,7 +20,7 @@
     if (!form.reportValidity()) return;
     var d = {
       type: 'team', submittedAt: new Date().toISOString(),
-      team: form.elements.team.value.trim(), members: form.elements.members.value.trim(), email: form.elements.email.value.trim(),
+      team: form.elements.team.value.trim(), members: form.elements.members.value.trim(), regNos: form.elements.regNos.value.trim(), email: form.elements.email.value.trim(),
       size: form.elements.size.value, track: form.elements.track.value
     };
     try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e2) {}

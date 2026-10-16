@@ -17,8 +17,8 @@
  */
 var SUBMISSIONS = 'Submissions';
 var TEAMS = 'Teams';
-var SUB_HEAD = ['submittedAt', 'team', 'track', 'product', 'repo', 'demo', 'modelType', 'task', 'algorithm', 'trainFile', 'apis', 'apiUse', 'extraData', 'email', 'json'];
-var TEAM_HEAD = ['Team name', 'Track', 'Members', 'People'];
+var SUB_HEAD = ['submittedAt', 'team', 'track', 'product', 'repo', 'demo', 'modelType', 'task', 'algorithm', 'trainFile', 'apis', 'apiUse', 'extraData', 'email', 'json', 'regNos'];
+var TEAM_HEAD = ['Team name', 'Track', 'Members', 'People', 'Reg numbers'];
 
 function getTab_(name, head) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -28,6 +28,8 @@ function getTab_(name, head) {
     sh.appendRow(head);
     sh.getRange(1, 1, 1, head.length).setFontWeight('bold').setBackground('#000000').setFontColor('#ffffff');
     sh.setFrozenRows(1);
+  } else if (sh.getRange(1, head.length).getValue() !== head[head.length - 1]) {
+    sh.getRange(1, 1, 1, head.length).setValues([head]);   // add new column titles to an existing tab
   }
   return sh;
 }
@@ -37,9 +39,9 @@ function upsertTeam_(d) {
   var sh = getTab_(TEAMS, TEAM_HEAD);
   var rows = sh.getDataRange().getValues();
   var name = String(d.team || '').trim().toLowerCase();
-  var vals = [d.team, d.track, d.members, Number(d.size) || ''];
+  var vals = [d.team, d.track, d.members, Number(d.size) || '', d.regNos || ''];
   for (var i = 1; i < rows.length; i++) {
-    if (String(rows[i][0]).trim().toLowerCase() === name) { sh.getRange(i + 1, 1, 1, 4).setValues([vals]); return; }
+    if (String(rows[i][0]).trim().toLowerCase() === name) { sh.getRange(i + 1, 1, 1, vals.length).setValues([vals]); return; }
   }
   sh.appendRow(vals);
 }
@@ -55,7 +57,7 @@ function doPost(e) {
   getTab_(SUBMISSIONS, SUB_HEAD).appendRow([
     d.submittedAt, d.team, d.track, d.product, d.repo, d.demo, d.modelType,
     m.task || '', m.algo || '', m.trainPath || '',
-    (d.apis || []).join(', '), d.apiUse || '', d.extraData || '', d.email, JSON.stringify(d)
+    (d.apis || []).join(', '), d.apiUse || '', d.extraData || '', d.email, JSON.stringify(d), d.regNos || ''
   ]);
   lock.releaseLock();
   return ContentService.createTextOutput('ok');
