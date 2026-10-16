@@ -17,8 +17,8 @@
  */
 var SUBMISSIONS = 'Submissions';
 var TEAMS = 'Teams';
-var SUB_HEAD = ['submittedAt', 'team', 'track', 'product', 'repo', 'demo', 'modelType', 'task', 'algorithm', 'trainFile', 'apis', 'apiUse', 'extraData', 'email', 'json', 'regNos'];
-var TEAM_HEAD = ['Team name', 'Track', 'Members', 'People', 'Reg numbers'];
+var SUB_HEAD = ['submittedAt', 'team', 'track', 'product', 'repo', 'demo', 'modelType', 'task', 'algorithm', 'trainFile', 'apis', 'apiUse', 'extraData', 'email', 'json', 'regNos', 'phones'];
+var TEAM_HEAD = ['Team name', 'Track', 'Members', 'People', 'Reg numbers', 'Phones'];
 
 function getTab_(name, head) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -39,7 +39,7 @@ function upsertTeam_(d) {
   var sh = getTab_(TEAMS, TEAM_HEAD);
   var rows = sh.getDataRange().getValues();
   var name = String(d.team || '').trim().toLowerCase();
-  var vals = [d.team, d.track, d.members, Number(d.size) || '', d.regNos || ''];
+  var vals = [d.team, d.track, d.members, Number(d.size) || '', d.regNos || '', d.phones || ''];
   for (var i = 1; i < rows.length; i++) {
     if (String(rows[i][0]).trim().toLowerCase() === name) { sh.getRange(i + 1, 1, 1, vals.length).setValues([vals]); return; }
   }
@@ -57,7 +57,7 @@ function doPost(e) {
   getTab_(SUBMISSIONS, SUB_HEAD).appendRow([
     d.submittedAt, d.team, d.track, d.product, d.repo, d.demo, d.modelType,
     m.task || '', m.algo || '', m.trainPath || '',
-    (d.apis || []).join(', '), d.apiUse || '', d.extraData || '', d.email, JSON.stringify(d), d.regNos || ''
+    (d.apis || []).join(', '), d.apiUse || '', d.extraData || '', d.email, JSON.stringify(d), d.regNos || '', d.phones || ''
   ]);
   lock.releaseLock();
   return ContentService.createTextOutput('ok');

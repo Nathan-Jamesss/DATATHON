@@ -17,10 +17,13 @@
       var duo = size.value === '2';
       f('members').value = [f('m1name').value, duo ? f('m2name').value : ''].map(function (s) { return s.trim(); }).filter(Boolean).join(', ');
       f('regNos').value = [f('m1reg').value, duo ? f('m2reg').value : ''].map(function (s) { return s.trim().toUpperCase(); }).filter(Boolean).join(', ');
+      f('phones').value = [f('m1phone').value, duo ? f('m2phone').value : ''].map(function (s) { return s.trim(); }).filter(Boolean).join(', ');
     }
     // values pre-filled by other scripts (saved team / draft) arrive in the hidden fields: split them back out
     function split() {
-      var n = (f('members').value || '').split(','), r = (f('regNos').value || '').split(',');
+      var n = (f('members').value || '').split(','), r = (f('regNos').value || '').split(','), ph = (f('phones').value || '').split(',');
+      if (!f('m1phone').value && ph[0]) f('m1phone').value = ph[0].trim();
+      if (!f('m2phone').value && ph[1]) f('m2phone').value = ph[1].trim();
       if (!f('m1name').value && n[0]) f('m1name').value = n[0].trim();
       if (!f('m1reg').value && r[0]) f('m1reg').value = r[0].trim();
       if (!f('m2name').value && n[1]) f('m2name').value = n[1].trim();
