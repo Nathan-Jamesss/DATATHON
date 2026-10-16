@@ -38,7 +38,7 @@ def make(wrapp, page_head, ic, TRACKS, REG):
 <h3>Before you submit — your repo is judged automatically</h3>
 <p>There is no live demo. Judges (and an AI evaluator) read only your GitHub repo, so make sure:</p>
 <ul>
-<li><b>Public repo.</b> Press <b>Check repo</b> below; it must find your repo. Private repos cannot be judged.</li>
+<li><b>Public repo.</b> Private repos cannot be judged.</li>
 <li><b>Code is on the main branch</b> (or type your branch name below).</li>
 <li><b>README</b> explains the problem, the target user, and <b>how to run</b> the project.</li>
 <li><b>README has screenshots</b> of your product (and sample outputs). No video needed.</li>
@@ -56,9 +56,9 @@ def make(wrapp, page_head, ic, TRACKS, REG):
 </div></fieldset>
 <fieldset><legend><span>02</span> Project &amp; GitHub</legend><div class="fgrid">
 {f("Product name", "product", req=True)}{f("One-line pitch (optional)", "pitch")}
-<label class="fld fld--wide"><span>GitHub repository URL *</span><div class="inline"><input type="url" name="repo" placeholder="https://github.com/team/project" required><button type="button" class="btn btn--fill" id="verify">Check repo</button></div><small>Must be public. “Check repo” is optional: it scans for model files, training code and API usage to help judges.</small></label>
+<label class="fld fld--wide"><span>GitHub repository URL *</span><input type="url" name="repo" placeholder="https://github.com/team/project" required><small>Must be public. Your repo is checked by the judges after submission.</small></label>
 {f("Branch (only if your code is not on main)", "branch", ph="main")}
-<div id="evidence" class="fld--wide"></div>
+
 </div></fieldset>
 <fieldset><legend><span>03</span> Your ML model</legend>
 <div class="opts" role="radiogroup" aria-label="Model type">{radios}</div>

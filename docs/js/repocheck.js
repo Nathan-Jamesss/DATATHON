@@ -89,8 +89,29 @@
       out.notes.push('Heuristic only: only the most relevant ~14 code files were scanned. Judge by reading the code.');
       return out;
     }).catch(function (e) {
-      return { ok: false, error: /^(403|429|rate)$/.test(String(e.message)) ? 'GitHub rate limit hit (shared Wi-Fi uses one quota) and the backup mirror could not find the repo. Judges can add a GitHub token on the judges page; teams can skip this check.' : 'Repo not found or private (make it public).' };
+      var limited = /^(403|429|rate)$/.test(String(e.message));
+      // Last resort: raw.githubusercontent.com has no hourly quota, so it can at least confirm the repo is public.
+      return rawExists(p).then(function (ref) {
+        if (ref) return { ok: true, light: true, owner: p.owner, repo: p.repo, branch: ref, suggested: 'unclear', modelFiles: [], trainFiles: [], trainHits: [], notebooks: 0, readme: true, mlLibs: [], apiLibs: [], apiHits: [], keyLeak: [], notes: [] };
+        return { ok: false, soft: limited, error: limited
+          ? 'GitHub is limiting checks on this network right now, so we could not verify it. You can still submit — just make sure the repo is public and has a README.'
+          : 'Repo not found or private. Check the link and make the repository public.' };
+      });
     });
+  }
+
+  function rawExists(p) {
+    var refs = p.branch ? [p.branch] : ['HEAD', 'main', 'master'];
+    var names = ['README.md', 'readme.md', 'Readme.md', 'README', 'requirements.txt'];
+    var tries = [];
+    refs.forEach(function (r) { names.forEach(function (n) { tries.push([r, n]); }); });
+    var next = function (i) {
+      if (i >= tries.length) return Promise.resolve('');
+      return fetch('https://raw.githubusercontent.com/' + p.owner + '/' + p.repo + '/' + tries[i][0] + '/' + tries[i][1], { method: 'GET' })
+        .then(function (r) { return r.ok ? tries[i][0] : next(i + 1); })
+        .catch(function () { return next(i + 1); });
+    };
+    return next(0);
   }
 
   var LABEL = { scratch: 'Looks trained from scratch', mixed: 'Own model + API calls', api: 'API / pretrained only', unclear: 'Unclear — read the code' };
@@ -98,7 +119,8 @@
   function list(a) { return a.length ? a.slice(0, 6).map(esc).join(', ') + (a.length > 6 ? ' +' + (a.length - 6) + ' more' : '') : '<em>none</em>'; }
 
   function render(el, r) {
-    if (!r.ok) { el.innerHTML = '<div class="ev ev--bad"><b>Could not check repo</b><span>' + esc(r.error) + '</span></div>'; return; }
+    if (!r.ok) { el.innerHTML = '<div class="ev' + (r.soft ? '' : ' ev--bad') + '"><b>' + (r.soft ? 'Check skipped' : 'Could not find repo') + '</b><span>' + esc(r.error) + '</span></div>'; return; }
+    if (r.light) { el.innerHTML = '<div class="ev"><b>✓ Repo found and public</b><span><a href="https://github.com/' + esc(r.owner + '/' + r.repo) + '" target="_blank" rel="noopener">' + esc(r.owner + '/' + r.repo) + '</a> — you can submit. (Detailed scan skipped: GitHub is busy on this network.)</span></div>'; return; }
     el.innerHTML = '<div class="ev"><div class="ev__top"><span class="chip chip--cyan">' + esc(LABEL[r.suggested]) + '</span><a href="https://github.com/' + esc(r.owner + '/' + r.repo) + '" target="_blank" rel="noopener">' + esc(r.owner + '/' + r.repo) + '</a></div>' +
       '<dl><dt>Model files</dt><dd>' + list(r.modelFiles) + '</dd><dt>Training code</dt><dd>' + list(r.trainHits.length ? r.trainHits : r.trainFiles) + '</dd><dt>ML libraries</dt><dd>' + list(r.mlLibs) + '</dd>' +
       '<dt>API libraries / calls</dt><dd>' + list(r.apiLibs.concat(r.apiHits)) + '</dd><dt>Notebooks</dt><dd>' + r.notebooks + '</dd><dt>README</dt><dd>' + (r.readme ? 'yes' : '<b>missing</b>') + '</dd></dl>' +

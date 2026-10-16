@@ -61,7 +61,7 @@
   } catch (e) {}
 
   var verifyBtn = document.getElementById('verify');
-  verifyBtn.addEventListener('click', function () {
+  if (verifyBtn) verifyBtn.addEventListener('click', function () {
     var url = form.elements.repo.value.trim();
     evEl.innerHTML = '<div class="ev"><span>Checking repository…</span></div>';
     verifyBtn.disabled = true;
