@@ -4,7 +4,7 @@ import os, shutil
 root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 src, dst = os.path.join(root, 'site'), os.path.join(root, 'docs')
 if os.path.exists(dst): shutil.rmtree(dst)
-shutil.copytree(src, dst)
+shutil.copytree(src, dst, ignore=shutil.ignore_patterns('data team', '*.tsv', '*.xlsx'))  # never mirror private exports
 open(os.path.join(dst, '.nojekyll'), 'w').close()
 p = os.path.join(dst, 'round2.html')
 s = open(p, encoding='utf-8').read()
