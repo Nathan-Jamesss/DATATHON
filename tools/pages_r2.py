@@ -48,9 +48,10 @@ def make(wrapp, page_head, ic, TRACKS, REG):
 </div>
 <form id="r2form" class="r2form" novalidate>
 <fieldset><legend><span>01</span> Team</legend><div class="fgrid">
-{f("Team name", "team", req=True)}{f("Members (1–2)", "members", req=True, ph="Name, Name")}{f("Registration number(s) *", "regNos", req=True, ph="e.g. 23BCE1234, 23BCE5678")}
-{f("Contact email", "email", "email", True)}
+{f("Team name", "team", req=True)}
 <label class="fld"><span>Number of people *</span><select name="size" required><option value="">Choose</option><option value="1">1 (solo)</option><option value="2">2 (duo)</option></select></label>
+<div class="fld fld--wide memblock"><div class="fgrid"><label class="fld"><span>Member 1 name *</span><input type="text" name="m1name" required></label><label class="fld"><span>Member 1 registration no. *</span><input type="text" name="m1reg" required placeholder="e.g. 23BCE1234"></label><label class="fld" data-m2 hidden><span>Member 2 name *</span><input type="text" name="m2name" disabled></label><label class="fld" data-m2 hidden><span>Member 2 registration no. *</span><input type="text" name="m2reg" disabled placeholder="e.g. 23BCE5678"></label></div><input type="hidden" name="members"><input type="hidden" name="regNos"></div>
+{f("Contact email", "email", "email", True)}
 <label class="fld"><span>Track *</span><select name="track" required><option value="">Choose your track</option>{track_opts}</select></label>
 </div></fieldset>
 <fieldset><legend><span>02</span> Project &amp; GitHub</legend><div class="fgrid">
@@ -83,7 +84,7 @@ def make(wrapp, page_head, ic, TRACKS, REG):
 </form>
 </div></section>"""
         return wrapp("round2", "Round 2 Submission · DATATHON 2026", "Submit your GitHub repository and model details for DATATHON Round 2.", body,
-                     '\n<script src="js/config.js"></script>\n<script src="js/repocheck.js"></script>\n<script src="js/round2.js"></script>')
+                     '\n<script src="js/config.js"></script>\n<script src="js/repocheck.js"></script>\n<script src="js/round2.js"></script>\n<script src="js/members.js"></script>')
 
     def judge_page():
         body = page_head("Organisers only", "Judges <span class=\"t\">console</span>",

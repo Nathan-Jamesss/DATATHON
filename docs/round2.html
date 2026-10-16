@@ -63,9 +63,10 @@
 </div>
 <form id="r2form" class="r2form" novalidate>
 <fieldset><legend><span>01</span> Team</legend><div class="fgrid">
-<label class="fld"><span>Team name *</span><input type="text" name="team" placeholder="" required></label><label class="fld"><span>Members (1–2) *</span><input type="text" name="members" placeholder="Name, Name" required></label><label class="fld"><span>Registration number(s) * *</span><input type="text" name="regNos" placeholder="e.g. 23BCE1234, 23BCE5678" required></label>
-<label class="fld"><span>Contact email *</span><input type="email" name="email" placeholder="" required></label>
+<label class="fld"><span>Team name *</span><input type="text" name="team" placeholder="" required></label>
 <label class="fld"><span>Number of people *</span><select name="size" required><option value="">Choose</option><option value="1">1 (solo)</option><option value="2">2 (duo)</option></select></label>
+<div class="fld fld--wide memblock"><div class="fgrid"><label class="fld"><span>Member 1 name *</span><input type="text" name="m1name" required></label><label class="fld"><span>Member 1 registration no. *</span><input type="text" name="m1reg" required placeholder="e.g. 23BCE1234"></label><label class="fld" data-m2 hidden><span>Member 2 name *</span><input type="text" name="m2name" disabled></label><label class="fld" data-m2 hidden><span>Member 2 registration no. *</span><input type="text" name="m2reg" disabled placeholder="e.g. 23BCE5678"></label></div><input type="hidden" name="members"><input type="hidden" name="regNos"></div>
+<label class="fld"><span>Contact email *</span><input type="email" name="email" placeholder="" required></label>
 <label class="fld"><span>Track *</span><select name="track" required><option value="">Choose your track</option><option value="01 Health">Track 1 · Health</option><option value="02 Education">Track 2 · Education</option><option value="03 Smart City">Track 3 · Smart City</option><option value="04 Business">Track 4 · Business</option></select></label>
 </div></fieldset>
 <fieldset><legend><span>02</span> Project &amp; GitHub</legend><div class="fgrid">
@@ -109,5 +110,6 @@
 <script src="js/config.js"></script>
 <script src="js/repocheck.js"></script>
 <script src="js/round2.js"></script>
+<script src="js/members.js"></script>
 <script>if(Date.now()<Date.parse('2026-10-16T13:00:00+05:30')){document.body.innerHTML='<main style="min-height:100vh;display:grid;place-items:center;background:#000;color:#fff;text-align:center;font-family:Inter,sans-serif;padding:24px"><div><p style="letter-spacing:.3em;color:#19e3f5;font-weight:800;font-size:12px">LOCKED UNTIL RELEASE</p><h1 style="font-size:clamp(34px,8vw,84px);margin:16px 0">ROUND 2 OPENS AT 1:00 PM</h1><p style="color:#a9b4b6">Friday 16 October 2026, 1:00 PM IST.</p><p><a href="index.html" style="color:#fff">Back to home</a></p></div></main>';}</script></body>
 </html>
