@@ -10,7 +10,7 @@
       var duo = size.value === '2';
       block.querySelectorAll('[data-m2]').forEach(function (l) {
         l.hidden = !duo;
-        var i = l.querySelector('input'); i.disabled = !duo; i.required = duo;
+        var i = l.querySelector('input'); i.disabled = !duo; i.required = duo && i.name !== 'm2phone';   // phones are optional
       });
     }
     function fill() {
@@ -39,7 +39,7 @@
         var d = (el.value || '').replace(/\D/g, '');
         if (d.length === 12 && d.indexOf('91') === 0) d = d.slice(2);
         if (d.length === 11 && d[0] === '0') d = d.slice(1);
-        el.setCustomValidity(el.disabled || /^[6-9][0-9]{9}$/.test(d) ? '' : 'Enter a 10-digit mobile number starting with 6, 7, 8 or 9');
+        el.setCustomValidity(el.disabled || !d || /^[6-9][0-9]{9}$/.test(d) ? '' : 'Enter a 10-digit mobile number starting with 6, 7, 8 or 9');
       });
     }
     split(); sync(); checkPhones();
