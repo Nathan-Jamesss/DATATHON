@@ -86,7 +86,7 @@ def footer():
 # =============================== HOME ===============================
 STOPS = [
  dict(cls="", icon="users", time="9:00", sub="AM – 10:00 AM", s="09:00", e="10:00", title="Opening Ceremony", text="Registration, welcome, rules, evaluation criteria and team setup. Get seated, get connected, get ready.", tags=["Registration", "Rules briefing", "Team setup"]),
- dict(cls="stop--milestone", icon="file", time="10:00", sub="AM · Release", s="10:00", e="10:05", title="Problem Statements Released", text="Four tracks and their starter datasets go live. Pick one track and start exploring.", tags=["4 tracks", "Datasets unlock"], link=("problem-statements.html", "Open problem statements & datasets")),
+ dict(cls="stop--milestone", icon="file", time="9:30", sub="AM · Release", s="09:30", e="09:35", title="Problem Statements Released", text="Four tracks and their starter datasets go live. Pick one track and start exploring.", tags=["4 tracks", "Datasets unlock"], link=("problem-statements.html", "Open problem statements & datasets")),
  dict(cls="", icon="bulb", time="10:00", sub="AM – 12:00 PM", s="10:00", e="12:00", title="Round 1 · PPT + Base Prototype", text="Submit your idea PPT (USP + MVP mandatory) and show a base prototype built on the provided dataset.", tags=["PPT", "USP + MVP", "Base prototype"], link=("#ppt", "Get the PPT template")),
  dict(cls="", icon="bars", time="12:00", sub="PM – 1:00 PM", s="12:00", e="13:00", title="Evaluation + Elimination Round", text="Judges review every Round 1 submission. Only shortlisted teams move on to the Final Round.", tags=["Judges review", "Elimination"]),
  dict(cls="stop--break", icon="clock", time="1:00", sub="PM – 1:30 PM", s="13:00", e="13:30", title="Lunch Break", text="Refuel. Shortlisted teams get ready for the final push.", tags=["30 min"]),
@@ -379,7 +379,7 @@ def problems(stats):
     h += f"""<div class="lock" id="lock" hidden><div><span class="eyebrow" style="justify-content:center">Locked until release</span><h2 class="display" style="margin-top:24px">Problem<br>statements<br>drop at <span class="t">10:00</span></h2><p>Friday 16 October 2026, 10:00 AM IST. Check back then.</p><div class="countdown" id="lockcd" data-target="2026-10-16T10:00:00+05:30" style="justify-content:center"></div><p><a class="btn" href="index.html">Back to home</a></p></div></div>
 <main>
 <section class="band band-dark subhero"><div class="wrap">
-<span class="eyebrow">Released 10:00 AM · Round 1</span>
+<span class="eyebrow">Released 9:30 AM · Round 1</span>
 <h1 class="display">Problem<br><span class="t">state</span>ments</h1>
 <p class="lede">Four tracks. One starter dataset each. Pick one track, build a working data-powered product — not just a notebook, chart, or isolated ML model.</p>
 <div class="jump">{jump}</div>

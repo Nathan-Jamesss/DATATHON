@@ -93,7 +93,7 @@ def strip():
 
 TILES = [
  ("01", "timeline.html", "clock", "Timeline", "Full itinerary with arrows, 9 AM to 6 PM.", "band-cyan"),
- ("02", "problem-statements.html", "db", "Problem Statements", "Unlocks Fri 16 Oct at 10:00 AM, with a live countdown.", "band-wash"),
+ ("02", "problem-statements.html", "db", "Problem Statements", "Unlocks Fri 16 Oct at 9:30 AM, with a live countdown.", "band-wash"),
  ("03", "ppt.html", "file", "Round 1 PPT", "Idea PPT + base prototype. USP + MVP are mandatory.", "band-dark"),
  ("04", "round2.html", "cube", "Round 2", "Submit your GitHub repo and model details by 4 PM.", "band-cyan"),
  ("05", "judging.html", "trophy", "Judging & Prizes", "100-mark rubric (from-scratch ML scores highest) and the ₹4,500 pool.", "band-wash"),
@@ -203,7 +203,7 @@ def problems_page():
     zips = "".join(f'<a class="btn btn--sm" href="datasets/{t["folder"]}.zip" download>{ic("download")} 0{t["n"]} {t["dom"]}</a>' for t in TRACKS)
     dlbar = f'<div class="dlbar"><span class="label">Download</span><a class="btn btn--fill" href="datasets/DATATHON_All_Track_Datasets.zip" download>{ic("download")} All 4 tracks (.zip)</a>{zips}</div>'
     tabs = "".join(f'<button class="ptab" role="tab" id="tab-{t["n"]}" aria-controls="track-{t["n"]}" aria-selected="false" data-n="{t["n"]}"><span class="ptab__no">0{t["n"]}</span><b>{t["title"]}</b><small>{t["dom"]}</small></button>' for t in TRACKS)
-    body = page_head("Released 10:00 AM · Round 1", "Problem <span class=\"t\">statements</span>", "Pick one track. Build a working data-powered product, not just a notebook.", dlbar)
+    body = page_head("Released 9:30 AM · Round 1", "Problem <span class=\"t\">statements</span>", "Pick one track. Build a working data-powered product, not just a notebook.", dlbar)
     team_opts = "".join(f'<option value="0{t["n"]} {t["dom"]}">Track {t["n"]} · {t["dom"]} — {t["title"]}</option>' for t in TRACKS)
     TEAM_FORM = '<form id="teamform" class="r2form teamform" novalidate>\n<fieldset><legend><span>★</span> Register your team &amp; track</legend>\n<p class="muted" style="margin:0 0 14px">Fill this once. It tells the judges which problem your team picked. You can save again to correct anything.</p>\n<div class="fgrid tf3">\n<label class="fld"><span>Team name *</span><input type="text" name="team" required></label>\n<label class="fld"><span>Members (1–2) *</span><input type="text" name="members" required placeholder="Name, Name"></label>\n<label class="fld"><span>Contact email *</span><input type="email" name="email" required></label>\n<label class="fld"><span>Number of people *</span><select name="size" required><option value="">Choose</option><option value="1">1 (solo)</option><option value="2">2 (duo)</option></select></label>\n<label class="fld tf-wide"><span>Track chosen *</span><select name="track" required><option value="">Choose your track</option>{team_opts}</select></label>\n<div class="tf-btn"><button class="btn btn--fill btn--lg" type="submit">Save my team</button></div>\n</div>\n<div id="teamout" class="r2out" hidden></div>\n</fieldset></form>\n'.replace("{team_opts}", team_opts)
     body += f"""<div class="lock" id="lock" hidden><div><span class="eyebrow" style="justify-content:center">Locked until release</span><h2 class="display" style="margin-top:24px">Drops at <span class="t">10:00</span></h2><p>Friday 16 October 2026, 10:00 AM IST.</p><div class="countdown" id="lockcd" data-target="2026-10-16T10:00:00+05:30" style="justify-content:center"></div><p><a class="btn" href="index.html">Back to home</a></p></div></div>

@@ -1,7 +1,7 @@
 // Release gates (run on Vercel's servers, so they can't be bypassed from the browser).
 // Until each release time the gated pages show a countdown (datasets return 403).
 // To change a time, edit the date below and push. Nothing else to touch.
-const PROBLEMS_AT = Date.parse('2026-10-16T10:00:00+05:30'); // Fri 16 Oct 2026, 10:00 AM IST
+const PROBLEMS_AT = Date.parse('2026-10-16T09:30:00+05:30'); // Fri 16 Oct 2026, 9:30 AM IST
 const ROUND2_AT = Date.parse('2026-10-16T13:00:00+05:30');   // Fri 16 Oct 2026,  1:00 PM IST
 
 export const config = {
@@ -82,13 +82,13 @@ export default function middleware(request) {
   // problem statements page + datasets
   if (now >= PROBLEMS_AT) return PASS();
   if (pathname.startsWith('/datasets')) {
-    return new Response('Locked until 16 Oct 2026, 10:00 AM IST.', {
+    return new Response('Locked until 16 Oct 2026, 9:30 AM IST.', {
       status: 403,
       headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' },
     });
   }
   return lockedPage({
-    title: 'Problem statements', at: 'Drops at 10:00 AM', release: PROBLEMS_AT,
-    text: 'Friday 16 October 2026, 10:00 AM IST. Problem statements and datasets unlock for everyone at the same moment.',
+    title: 'Problem statements', at: 'Drops at 9:30 AM', release: PROBLEMS_AT,
+    text: 'Friday 16 October 2026, 9:30 AM IST. Problem statements and datasets unlock for everyone at the same moment.',
   });
 }
