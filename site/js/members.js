@@ -32,13 +32,24 @@
       if (!size.value && n[1] && n[1].trim()) size.value = '2';
     }
 
-    split(); sync();
+    // Indian mobile: 10 digits starting with 6-9 (+91 / 0 / spaces / dashes are allowed and cleaned)
+    function checkPhones() {
+      ['m1phone', 'm2phone'].forEach(function (n) {
+        var el = f(n); if (!el) return;
+        var d = (el.value || '').replace(/\D/g, '');
+        if (d.length === 12 && d.indexOf('91') === 0) d = d.slice(2);
+        if (d.length === 11 && d[0] === '0') d = d.slice(1);
+        el.setCustomValidity(el.disabled || /^[6-9][0-9]{9}$/.test(d) ? '' : 'Enter a 10-digit mobile number starting with 6, 7, 8 or 9');
+      });
+    }
+    split(); sync(); checkPhones();
     size.addEventListener('change', sync);
-    form.addEventListener('input', fill);
+    form.addEventListener('input', function () { fill(); checkPhones(); });
+    size.addEventListener('change', checkPhones);
     // runs before the page's own submit handler: fill hidden fields and block incomplete forms
     document.addEventListener('submit', function (e) {
       if (e.target !== form) return;
-      fill();
+      fill(); checkPhones();
       if (!form.reportValidity()) { e.preventDefault(); e.stopImmediatePropagation(); }
     }, true);
   });
